@@ -7,7 +7,7 @@ Feature('First test');
 Scenario('test something', async () => {
     I.amOnPage('/')
     pause()
-    //contactPage.acceptCooki()
+    await contactPage.acceptCookies()
    // I.click(contactPage.submitButton)
     contactPage.fillAndSendForm(contact, 'required')
 

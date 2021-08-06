@@ -11,11 +11,11 @@ module.exports = {
     message: locate("textarea").withAttr({id: "powermail_field_ihrenachricht"}),
     send: locate("textarea").withAttr({value: "Send"}),
     dataPrivacy: locate("label").withAttr({for: "powermail_field_datenschutz_1"}),
-    acceptButton: locate("button").withAttr({'aria-label': 'Alles akzeptieren'}),
+    acceptButton: locate("button").withAttr({'data-testid': 'uc-accept-all-button'}),
     submitButton: locate("button").withText('ALLES AKZEPTIEREN').inside(locate("div").withAttr({id: 'usercentrics-root'})),
 
-    acceptCooki(){
-        within("#shadow-root", () => {
+    async acceptCookies() {
+        await within({class: 'sc-jgPyTC filVLb'}, () => {
             I.click(this.acceptButton)
         }).then();
     },

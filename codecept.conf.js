@@ -11,7 +11,7 @@ exports.config = {
       browser: 'chromium',
       waitForNavigation: "networkidle",
       waitForTimeout: 10000,
-      windowSize: '640x680',
+      windowSize: '1240x650',
       //basicAuth: { username: 'postman', password: 'password' },
     },
     emailHelper: {
