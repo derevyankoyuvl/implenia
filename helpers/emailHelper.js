@@ -20,9 +20,9 @@ class EmailHelper extends Helper {
         );
     }
 
-    async findMail(email, subject, from) {
+    async checkEmailText(email, subject, from) {
         let mail = await this.getMail(email, subject, from)
-        return mail.body.html.match(/<a[^>]+href="([^\"]+)"[^>]+>ACTIVATE<\/a\s+>/)[1]
+        return mail.body.text
     }
 
     async findMailContractor(email, subject) {

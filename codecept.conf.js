@@ -7,7 +7,7 @@ exports.config = {
     Playwright: {
       url: 'https://denkt&baut:caterpill@r@stage.implenia.com/en/about-us/contact/',
       //url: 'https://implenia.com/',
-      show: true,
+      show: false,
       browser: 'chromium',
       waitForNavigation: "networkidle",
       waitForTimeout: 10000,
@@ -27,7 +27,8 @@ exports.config = {
   include: {
     I: './steps_file.js',
     contactPage: "./pages/contactPage.js",
-    contactForm: "./fragments/contactForm.js"
+    contactForm: "./fragments/contactForm.js",
+    spinner: "./fragments/spinner.js"
   },
   name: 'implenia',
   plugins: {

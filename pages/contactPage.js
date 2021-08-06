@@ -1,4 +1,4 @@
-const {I} = inject()
+const {I, spinner} = inject()
 
 module.exports = {
 
@@ -9,15 +9,19 @@ module.exports = {
     address: locate("input").withAttr({id: "powermail_field_adresseinklland"}),
     phone: locate("input").withAttr({id: "powermail_field_telefon"}),
     message: locate("textarea").withAttr({id: "powermail_field_ihrenachricht"}),
-    send: locate("textarea").withAttr({value: "Send"}),
+    send: locate("input").withAttr({value: "Send"}),
     dataPrivacy: locate("label").withAttr({for: "powermail_field_datenschutz_1"}),
     acceptButton: locate("button").withAttr({'data-testid': 'uc-accept-all-button'}),
+    consentManager: locate("div").withAttr({'data-testid': 'uc-container'}),
     submitButton: locate("button").withText('ALLES AKZEPTIEREN').inside(locate("div").withAttr({id: 'usercentrics-root'})),
 
-    async acceptCookies() {
-        await within({class: 'sc-jgPyTC filVLb'}, () => {
-            I.click(this.acceptButton)
-        }).then();
+    acceptCookies() {
+        I.click('.sc-gtsrHT.iGMqnF');
+    },
+
+    async checkSendingConfirmation(){
+        I.waitForInvisible(spinner.loading, 30)
+        await I.see('Thank you very much for your message. We will contact you shortly.')
     },
 
     enterFirstName(contactData){
@@ -49,7 +53,7 @@ module.exports = {
     },
 
     checkDataPrivacy(){
-        I.click(this.message)
+        I.click(this.dataPrivacy)
     },
 
     sendForm(){
@@ -71,6 +75,7 @@ module.exports = {
             this.enterFirstName(contactData)
             this.enterLastName(contactData)
             this.enterEmail(contactData)
+            this.enterMessage(contactData)
             this.checkDataPrivacy()
             this.sendForm()
         }
