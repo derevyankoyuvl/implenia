@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
+    stage('automationTests') {
       steps {
-        sh 'npm --version'
+        script: npm install npm run codeceptjs
       }
     }
 
