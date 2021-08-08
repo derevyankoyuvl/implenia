@@ -27,7 +27,7 @@ class EmailHelper extends Helper {
 
     async findMailContractor(email, subject) {
         let mail = await this.getMail(email, subject)
-        return mail.subject;
+        return mail.from;
     }
 }
 

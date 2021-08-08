@@ -45,7 +45,11 @@ module.exports = {
     },
 
     enterPhone(contactData){
-        I.fillField(this.dataPrivacy, contactData.phone)
+        I.fillField(this.phone, contactData.phone)
+    },
+
+    enterAddress(contactData){
+        I.fillField(this.address, contactData.address)
     },
 
     enterMessage(contactData){
@@ -67,6 +71,7 @@ module.exports = {
             this.enterEmail(contactData)
             this.enterPhone(contactData)
             this.enterCompany(contactData)
+            this.enterAddress(contactData)
             this.enterMessage(contactData)
             this.checkDataPrivacy()
             this.sendForm()

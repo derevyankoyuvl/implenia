@@ -5,7 +5,7 @@ exports.config = {
   output: './output',
   helpers: {
     Playwright: {
-      url: 'https://denkt&baut:caterpill@r@stage.implenia.com/en/about-us/contact/',
+      url: 'https://denkt&baut:caterpill@r@stage.implenia.com/',
       //url: 'https://implenia.com/',
       show: false,
       browser: 'chromium',
