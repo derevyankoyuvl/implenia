@@ -17,5 +17,4 @@ Scenario('Send contact form', async () => {
     I.assertContain(data, contact.message);
     I.assertContain(data, contact.phone);
     I.assertContain(data, contact.address);
-    I.assertContain(data, contact.company);
 });

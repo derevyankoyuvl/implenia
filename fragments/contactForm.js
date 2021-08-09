@@ -11,7 +11,7 @@ module.exports = {
             company: faker.company.companyName(),
             phone: faker.phone.phoneNumber('012#######'),
             address: faker.address.streetAddress() + " " + faker.address.zipCode() + " " + faker.address.county(),
-            message: faker.lorem.sentence(),
+            message: 'This is only a test message',
         }
     }
 }
