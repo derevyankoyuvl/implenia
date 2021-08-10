@@ -12,9 +12,9 @@ Scenario('Send contact form', async () => {
     let data = await I.checkEmailText(contact.lastName + ' <' + contact.email + '>')
     console.log(contact)
     console.log(data)
-    I.assertContain(data, contact.firstName + ' ' + contact.lastName);
+    I.assertContain(data, contact.firstName);
+    I.assertContain(data, contact.lastName);
     I.assertContain(data, contact.email);
     I.assertContain(data, contact.message);
     I.assertContain(data, contact.phone);
-    I.assertContain(data, contact.address);
 });
