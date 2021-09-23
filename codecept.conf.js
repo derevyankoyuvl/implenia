@@ -5,14 +5,13 @@ exports.config = {
   output: './output',
   helpers: {
     Playwright: {
-      url: 'https://denkt&baut:caterpill@r@stage.implenia.com/',
-      //url: 'https://implenia.com/',
-      show: false,
+      //url: 'https://denkt&baut:caterpill@r@stage.implenia.com/',
+      url: 'https://implenia.com/',
+      show: true,
       browser: 'chromium',
       waitForNavigation: "networkidle",
       waitForTimeout: 10000,
       windowSize: '1240x650',
-      //basicAuth: { username: 'postman', password: 'password' },
     },
     emailHelper: {
       require: './helpers/emailHelper.js',
