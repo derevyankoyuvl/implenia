@@ -16,7 +16,8 @@ module.exports = {
     submitButton: locate("button").withText('ALLES AKZEPTIEREN').inside(locate("div").withAttr({id: 'usercentrics-root'})),
 
     acceptCookies() {
-        I.click('.sc-gtsrHT.iGMqnF');
+        //I.click('.sc-gtsrHT.iGMqnF');
+        I.click({css: 'button[data-testid=uc-accept-all-button]'} );
     },
 
     async checkSendingConfirmation(){
