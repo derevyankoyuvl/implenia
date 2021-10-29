@@ -3,7 +3,7 @@ const {I, contactPage, contactForm} = inject()
 let contact = contactForm.CONTACTFORM()
 
 Feature('Sending data forms').tag('@form');
-/*
+
 Scenario('Send contact form', async () => {
     I.amOnPage('en/about-us/contact/')
     await contactPage.acceptCookies()
@@ -17,4 +17,4 @@ Scenario('Send contact form', async () => {
     I.assertContain(data, contact.email);
     I.assertContain(data, contact.message);
     I.assertContain(data, contact.phone);
-});*/
+});
