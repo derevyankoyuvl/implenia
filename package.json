@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "codeceptjs": "codeceptjs run --steps --reporter mocha-multi --grep @form",
+    "codeceptjs": "codeceptjs run --steps --grep @form",
     "codeceptjsHome": "codeceptjs run --steps --grep @home",
     "codeceptjs:regression": "codeceptjs run --grep @regression --steps --reporter mocha-multi"
   },
