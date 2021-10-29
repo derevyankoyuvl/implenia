@@ -6,12 +6,22 @@ exports.config = {
   helpers: {
     Playwright: {
       //url: 'https://denkt&baut:caterpill@r@stage.implenia.com/',
-      url: 'https://implenia.com/',
-      show: true,
-      browser: 'chromium',
+      //url: 'https://implenia.com/',
+      url: 'https://denkt&baut:caterpill@r@integration2.implenia.com/',
+      show: false,
+      browser: 'firefox',
+      //browser: 'chromium',
       waitForNavigation: "networkidle",
       waitForTimeout: 10000,
+      //windowSize: 'maximize',
       windowSize: '1240x650',
+      //windowSize: '1260x718',
+    },
+    ResembleHelper : {
+      "require": "codeceptjs-resemblehelper",
+      "screenshotFolder" : "./output/",
+      "baseFolder": "./screenshots/base/",
+      "diffFolder": "./screenshots/diff/"
     },
     emailHelper: {
       require: './helpers/emailHelper.js',
@@ -27,7 +37,10 @@ exports.config = {
     I: './steps_file.js',
     contactPage: "./pages/contactPage.js",
     contactForm: "./fragments/contactForm.js",
-    spinner: "./fragments/spinner.js"
+    homePage: "./pages/homePage.js",
+    newsPage: "./pages/newsRoom.js",
+    spinner: "./fragments/spinner.js",
+    common: "./fragments/common.js"
   },
   name: 'implenia',
   plugins: {

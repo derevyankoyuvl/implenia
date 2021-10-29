@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="16.4610" tests="1" failures="0">
+  <testsuite name="Root Suite" timestamp="2021-10-14T14:44:00" tests="0" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="Home page @home" timestamp="2021-10-14T14:44:00" tests="1" file="/Users/yuriyderevyanko/impleniaProject/suites/homePage_test.js" time="16.4610" failures="0">
+    <testcase name="Home page @home: Video is playing" time="16.4610" classname="Video is playing">
+    </testcase>
+  </testsuite>
+</testsuites>
