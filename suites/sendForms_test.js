@@ -7,7 +7,6 @@ Feature('Sending data forms').tag('@form');
 Scenario('Send contact form', async () => {
     I.amOnPage('https://implenia.com/en/about-us/contact/')
     await contactPage.acceptCookies()
-    pause()
     contactPage.fillAndSendForm(contact, 'all')
     await contactPage.checkSendingConfirmation()
     let data = await I.checkEmailText(contact.lastName + ' <' + contact.email + '>')
