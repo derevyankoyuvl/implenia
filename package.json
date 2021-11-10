@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "codeceptjs-applitoolshelper": "^1.0.4",
-    "codeceptjs-resemblehelper": "^1.9.4",
+    "codeceptjs-resemblehelper": "^1.9.5",
     "semver": "^7.3.5"
   }
 }
