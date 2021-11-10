@@ -12,5 +12,12 @@ module.exports = {
 
     changeWindowSize(width, length) {
         I.resizeWindow(width, length)
-    }
+    },
+
+    checkImage(element, image, toleranceLevel){
+        I.waitForElement(element)
+        I.screenshotElement(element, image);
+        let baseImage = image + ".png"
+        I.seeVisualDiff(baseImage, {tolerance: toleranceLevel, prepareBaseImage: false, needsSameDimension: false});
+    },
 }

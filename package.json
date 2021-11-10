@@ -5,6 +5,7 @@
   "scripts": {
     "codeceptjs": "codeceptjs run --steps --grep @form",
     "codeceptjsHome": "codeceptjs run --steps --grep @home",
+    "codeceptjsSmoke": "codeceptjs run --steps --grep @smoke",
     "codeceptjs:regression": "codeceptjs run --grep @regression --steps --reporter mocha-multi"
   },
   "keywords": [],

@@ -2,7 +2,7 @@ const {I, homePage, contactPage, common, newsPage} = inject()
 const {devices} = require("playwright")
 
 
-Feature('Home page').tag('@home');
+Feature('Home page').tag('@home').tag('smoke');
 
 Before(({I}) => {
     I.clearCookie()
@@ -10,7 +10,7 @@ Before(({I}) => {
 })
 
 Scenario('Video is playing', async () => {
-    await common.acceptCookies()
+    tryTo(() => common.acceptCookie())
     I.seeElement(homePage.circularEconomyVideo);
     await homePage.checkVideoAutoplay()
 });
@@ -22,23 +22,23 @@ Scenario('Check Stock Price Widget', async () => {
     I.seeElement(homePage.shareIsin);
     I.seeElement(homePage.sharePrice);
     I.seeElement(homePage.shareChange);
-    homePage.checkImage(homePage.stockPrice, "StockPrice", 30)
+    common.checkImage(homePage.stockPrice, "StockPrice", 30)
 });
 
 Scenario('Check Images', async () => {
     tryTo(() => common.acceptCookie())
     I.wait(5)
-    homePage.checkImage(homePage.contactImg, "Contact_Image", 20)
-    homePage.checkImage(homePage.civilEngineeringImg, "CivilEngineering_Image", 25)
-    homePage.checkImage(homePage.impleniaServicesImg, "ImpleniaServices_Image", 20)
-    homePage.checkImage(homePage.specialConstructionServicesImg, "SpecialConstructionServices_Image", 20)
-    homePage.checkImage(homePage.homeOwnershipImg, "HomeOwnership_Image", 20)
-    homePage.checkImage(homePage.sustainableRealEstateImg, "SustainableRealEstate_Image", 20)
+    common.checkImage(homePage.contactImg, "Contact_Image", 35)
+    common.checkImage(homePage.civilEngineeringImg, "CivilEngineering_Image", 35)
+    common.checkImage(homePage.impleniaServicesImg, "ImpleniaServices_Image", 35)
+    common.checkImage(homePage.specialConstructionServicesImg, "SpecialConstructionServices_Image", 35)
+    common.checkImage(homePage.homeOwnershipImg, "HomeOwnership_Image", 35)
+    common.checkImage(homePage.sustainableRealEstateImg, "SustainableRealEstate_Image", 35)
 });
 
 Scenario('Check Navigation Menu', async () => {
     tryTo(() => common.acceptCookie())
-    homePage.openMenu()
+    await homePage.openMenu()
     homePage.seeNavigationMenuItems()
     await homePage.checkSubMenuNavigation('AboutUs')
     await homePage.checkSubMenuNavigation("Services")
@@ -115,3 +115,21 @@ Scenario('Check on Mobile', async () => {
         I.seeElement(homePage.stockPrice);
     })
 });
+/*
+Scenario('Check search by keyword Implenia', async () => {
+    tryTo(() => common.acceptCookie())
+    homePage.openSearchPanel()
+    homePage.enterSearchRequest('Implenia')
+    await homePage.checkSearchResults()
+});
+
+Scenario('Check search by keyword Implenia - results are clickable', async () => {
+    tryTo(() => common.acceptCookie())
+    homePage.openSearchPanel()
+    homePage.enterSearchRequest('Implenia')
+    await homePage.checkSearchResults()
+    console.log('Search results are ok')
+    await homePage.checkNumberOfSearchResultsOnPage(10)
+    await homePage.checkSearchResultRecords()
+});
+*/

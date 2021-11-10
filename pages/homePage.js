@@ -42,7 +42,7 @@ module.exports = {
     shareIsin: locate("div").withAttr({"class": "share__isin"}),
     sharePrice: locate("div").withAttr({"class": "share__price"}),
     shareChange: locate("div").withAttr({"class": "share__change"}),
-    currentLanguage: locate("div").withAttr({"class": "current-lang__identifier"}),
+    currentLanguage: locate("span").withAttr({"class": "current-lang__identifier"}),
     contactImg: locate("img").withAttr({"alt": "Contact"}),
     civilEngineeringImg: locate("img").withAttr({"alt": "Civil Engineering"}),
     sustainableRealEstateImg: locate("img").withAttr({"alt": "Sustainable real estate"}),
@@ -58,10 +58,65 @@ module.exports = {
     topicsAndProjectsLnk: locate("a").withText('All Topics and Projects'),
     reportsLnk: locate("a").withText('All Reports'),
     submitButton: locate("button").withText('ALLES AKZEPTIEREN').inside(locate("div").withAttr({id: 'usercentrics-root'})),
+    search: locate("span").withText('Search').withAttr({"class": "control-link__label"}),
+    searchInput: locate("input").withAttr({"placeholder": "Search…"}),
+    searchResults: locate("p").withAttr({"class": "score"}),
+    searchResultList: locate("div").withAttr({"class": "search-result"}),
+    searchResultRecord: (id) => locate("div").withAttr({"class": "search-result"}).at(id),
+    searchResultLink: (ref) => locate("a").withAttr({"href": ref}),
+    searchResultHref: locate("a"),
 
     acceptCookies() {
         //I.click('.sc-gtsrHT.iGMqnF');
         I.click({css: 'button[data-testid=uc-accept-all-button]'} );
+    },
+
+    async checkSearchResultRecords() {
+        let numOfElements = await I.grabNumberOfVisibleElements(this.searchResultList);
+        console.log('Number of links to check ' + numOfElements )
+        for (let i = 0; i< numOfElements; i++)
+        {
+            await within(this.searchResultRecord(i+1), async () => {
+                let value = await I.grabAttributeFrom(this.searchResultHref, 'href')
+                let numOfElements = await I.grabNumberOfVisibleElements(this.searchResultLink(value));
+                console.log(value)
+                console.log(numOfElements)
+                I.wait(2)
+                I.click(this.searchResultLink(value))
+                pause()
+            });
+        }
+
+    },
+
+    async checkNumberOfSearchResultsOnPage(num) {
+        let numOfElements = await I.grabNumberOfVisibleElements(this.searchResultList);
+        console.log('Search results on page ' + numOfElements )
+        I.assertEqual(numOfElements, num);
+    },
+
+    openSearchPanel(){
+        I.click(this.search)
+    },
+
+    enterSearchRequest(text){
+        I.fillField(this.searchInput, text)
+        I.pressKey('Enter');
+    },
+
+    async checkSearchResults(){
+        let results = await I.grabTextFrom(this.searchResults)
+        console.log(results)
+        results = results.replace(/\s+/g, '')
+        results = results.substring(17)
+        let substringToRemove = "total"
+        results = results.substring(0, results.length - substringToRemove.length )
+        if (results > 1000) {
+            I.assertEqual(true, true)
+        }
+        else {
+            I.assertEqual(false, true);
+        }
     },
 
     async checkVideoAutoplay(){
@@ -72,9 +127,12 @@ module.exports = {
 
     async checkSubMenuNavigation(subMenu){
         if (subMenu === 'AboutUs') {
+            await I.waitForElement(this.aboutUs)
             I.seeElement(this.aboutUs)
             this.openAboutUsSubMenu()
+            await I.waitForElement(this.history)
             I.seeElement(this.history)
+            //I.wait(0.5)
             this.clickOnHistory()
             let url = await I.grabCurrentUrl();
             console.log(url)
@@ -83,10 +141,15 @@ module.exports = {
         }
         else if (subMenu === "Services") {
             I.amOnPage('en/')
+            await I.waitForElement(this.menu)
             I.seeElement(this.menu)
-            this.openMenu()
+            await this.openMenu()
+            await I.waitForElement(this.services)
+            //I.wait(0.5)
             I.seeElement(this.services)
             this.openServicesSubMenu()
+            //I.wait(0.5)
+            await I.waitForElement(this.civilEngineering)
             I.seeElement(this.civilEngineering)
             this.clickOnCivilEngineering()
             let url = await I.grabCurrentUrl();
@@ -96,10 +159,14 @@ module.exports = {
         }
         else if (subMenu === "References") {
             I.amOnPage('en/')
+            await I.waitForElement(this.menu)
             I.seeElement(this.menu)
-            this.openMenu()
+            await this.openMenu()
+            await I.waitForElement(this.references)
+            //I.wait(0.5)
             I.seeElement(this.references)
             this.openReferenceSubMenu()
+            await I.waitForElement(this.referencesOverview)
             I.seeElement(this.referencesOverview)
             this.clickOnReferenceOverview()
             let url = await I.grabCurrentUrl();
@@ -109,10 +176,15 @@ module.exports = {
         }
         else if (subMenu === "Investor Relations") {
             I.amOnPage('en/')
+            await I.waitForElement(this.menu)
             I.seeElement(this.menu)
-            this.openMenu()
+            await this.openMenu()
+            await I.waitForElement(this.investors)
+            //I.wait(0.5)
             I.seeElement(this.investors)
             this.openInvestorsSubMenu()
+            await I.waitForElement(this.publications)
+            //I.wait(0.5)
             I.seeElement(this.publications)
             this.clickOnPublications()
             let url = await I.grabCurrentUrl();
@@ -122,10 +194,15 @@ module.exports = {
         }
         else if (subMenu === "Media") {
             I.amOnPage('en/')
+            await I.waitForElement(this.menu)
             I.seeElement(this.menu)
-            this.openMenu()
+            await this.openMenu()
+            await I.waitForElement(this.media)
+            //I.wait(0.5)
             I.seeElement(this.media)
             this.openMediaSubMenu()
+            await I.waitForElement(this.newsroom)
+            //I.wait(0.5)
             I.seeElement(this.newsroom)
             this.clickOnNewsroom()
             let url = await I.grabCurrentUrl();
@@ -135,10 +212,15 @@ module.exports = {
         }
         else if (subMenu === "Sustainability") {
             I.amOnPage('en/')
+            await I.waitForElement(this.menu)
             I.seeElement(this.menu)
-            this.openMenu()
+            await this.openMenu()
+            await I.waitForElement(this.sustainability)
+            //I.wait(0.5)
             I.seeElement(this.sustainability)
             this.openSustainabilitySubMenu()
+            await I.waitForElement(this.sustainabilityReport)
+            //I.wait(0.5)
             I.seeElement(this.sustainabilityReport)
             this.clickOnSustainabilityReport()
             let url = await I.grabCurrentUrl();
@@ -148,10 +230,15 @@ module.exports = {
         }
         else if (subMenu === "Career") {
             I.amOnPage('en/')
+            await I.waitForElement(this.menu)
             I.seeElement(this.menu)
-            this.openMenu()
+            await this.openMenu()
+            await I.waitForElement(this.career)
+            //I.wait(0.5)
             I.seeElement(this.career)
             this.openCareerSubMenu()
+            await I.waitForElement(this.switzerland)
+            //I.wait(0.5)
             I.seeElement(this.switzerland)
             this.clickOnSwitzerland()
             let url = await I.grabCurrentUrl();
@@ -161,10 +248,15 @@ module.exports = {
         }
         else if (subMenu === "Locations") {
             I.amOnPage('en/')
+            await I.waitForElement(this.menu)
             I.seeElement(this.menu)
-            this.openMenu()
+            await this.openMenu()
+            await I.waitForElement(this.locations)
+            //I.wait(0.5)
             I.seeElement(this.locations)
             this.openLocationsSubMenu()
+            await I.waitForElement(this.overviewLocations)
+            //I.wait(0.5)
             I.seeElement(this.overviewLocations)
             this.clickOnOverviewLocations()
             let url = await I.grabCurrentUrl();
@@ -303,8 +395,9 @@ module.exports = {
         I.seeNumberOfVisibleElements(this.newsSection, 4)
     },
 
-    openMenu() {
-        I.click(this.menu);
+    async openMenu() {
+        await I.waitForElement(this.menu)
+        I.click(this.menu)
     },
 
     openAboutUsSubMenu() {
