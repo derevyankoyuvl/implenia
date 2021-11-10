@@ -1,4 +1,5 @@
 const gmail = require("gmail-tester");
+//npx codeceptjs run --grep @aboutUs --steps -o '{ "helpers": {"Playwright": {"url": "https://denkt&baut:caterpill@r@integration2.implenia.com/"}}}'
 
 exports.config = {
   tests: './suites/*_test.js',
@@ -8,6 +9,7 @@ exports.config = {
       //url: 'https://denkt&baut:caterpill@r@stage.implenia.com/',
       //url: 'https://implenia.com/',
       url: 'https://denkt&baut:caterpill@r@integration2.implenia.com/',
+      //url: 'https://prod2.implenia.com/',
       show: false,
       browser: 'firefox',
       //browser: 'chromium',
@@ -39,6 +41,9 @@ exports.config = {
     contactForm: "./fragments/contactForm.js",
     homePage: "./pages/homePage.js",
     newsPage: "./pages/newsRoom.js",
+    aboutUsPage: "./pages/aboutUs.js",
+    managementPage: "./pages/management.js",
+    referencesPage: "./pages/references.js",
     spinner: "./fragments/spinner.js",
     common: "./fragments/common.js"
   },
