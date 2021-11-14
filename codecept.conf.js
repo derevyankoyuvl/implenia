@@ -7,8 +7,8 @@ exports.config = {
   helpers: {
     Playwright: {
       //url: 'https://denkt&baut:caterpill@r@stage.implenia.com/',
-      //url: 'https://implenia.com/',
-      url: 'https://denkt&baut:caterpill@r@integration2.implenia.com/',
+      url: 'https://implenia.com/',
+      //url: 'https://denkt&baut:caterpill@r@integration2.implenia.com/',
       //url: 'https://prod2.implenia.com/',
       show: false,
       browser: 'firefox',

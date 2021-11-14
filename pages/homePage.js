@@ -42,7 +42,7 @@ module.exports = {
     shareIsin: locate("div").withAttr({"class": "share__isin"}),
     sharePrice: locate("div").withAttr({"class": "share__price"}),
     shareChange: locate("div").withAttr({"class": "share__change"}),
-    currentLanguage: locate("span").withAttr({"class": "current-lang__identifier"}),
+    currentLanguage: locate("div").withAttr({"class": "current-lang__identifier"}),
     contactImg: locate("img").withAttr({"alt": "Contact"}),
     civilEngineeringImg: locate("img").withAttr({"alt": "Civil Engineering"}),
     sustainableRealEstateImg: locate("img").withAttr({"alt": "Sustainable real estate"}),
@@ -137,6 +137,7 @@ module.exports = {
             let url = await I.grabCurrentUrl();
             console.log(url)
             I.assertContain(url, 'en/about-us/history/');
+            I.dontSee('Oops, an error occurred!')
             //I.seeCurrentUrlEquals('en/about-us/history/');
         }
         else if (subMenu === "Services") {
@@ -155,6 +156,7 @@ module.exports = {
             let url = await I.grabCurrentUrl();
             console.log(url)
             I.assertContain(url, 'en/services/civil-engineering/');
+            I.dontSee('Oops, an error occurred!')
             //I.seeCurrentUrlEquals('en/services/civil-engineering/');
         }
         else if (subMenu === "References") {
@@ -172,6 +174,7 @@ module.exports = {
             let url = await I.grabCurrentUrl();
             console.log(url)
             I.assertContain(url, 'en/references/overview/');
+            I.dontSee('Oops, an error occurred!')
             //I.seeCurrentUrlEquals('en/references/overview/');
         }
         else if (subMenu === "Investor Relations") {
@@ -190,6 +193,7 @@ module.exports = {
             let url = await I.grabCurrentUrl();
             console.log(url)
             I.assertContain(url, 'en/investor-relations/publications/financial-publications/');
+            I.dontSee('Oops, an error occurred!')
             //I.seeCurrentUrlEquals('en/investor-relations/publications/financial-publications/');
         }
         else if (subMenu === "Media") {
@@ -208,6 +212,7 @@ module.exports = {
             let url = await I.grabCurrentUrl();
             console.log(url)
             I.assertContain(url, 'en/media/newsroom/');
+            I.dontSee('Oops, an error occurred!')
             //I.seeCurrentUrlEquals('en/media/newsroom/');
         }
         else if (subMenu === "Sustainability") {
@@ -226,6 +231,7 @@ module.exports = {
             let url = await I.grabCurrentUrl();
             console.log(url)
             I.assertContain(url, 'en/sustainability/sustainability-report/');
+            I.dontSee('Oops, an error occurred!')
             //I.seeCurrentUrlEquals('en/sustainability/sustainability-report/');
         }
         else if (subMenu === "Career") {
@@ -244,6 +250,7 @@ module.exports = {
             let url = await I.grabCurrentUrl();
             console.log(url)
             I.assertContain(url, 'en/career/switzerland/job-opportunities/');
+            I.dontSee('Oops, an error occurred!')
             //I.seeCurrentUrlEquals('en/career/switzerland/job-opportunities/');
         }
         else if (subMenu === "Locations") {
@@ -262,6 +269,7 @@ module.exports = {
             let url = await I.grabCurrentUrl();
             console.log(url)
             I.assertContain(url, 'en/locations/overview/');
+            I.dontSee('Oops, an error occurred!')
             //I.seeCurrentUrlEquals('en/locations/overview/');
         }
     },
@@ -271,6 +279,7 @@ module.exports = {
             I.click(this.adhocReleasesLnk)
             let url = await I.grabCurrentUrl();
             I.assertContain(url, "media/newsroom/");
+            I.dontSee('Oops, an error occurred!')
             I.amOnPage('en/')
         }
         else if (noSection === 2) {
@@ -283,12 +292,14 @@ module.exports = {
             I.click(this.topicsAndProjectsLnk)
             let url3 = await I.grabCurrentUrl();
             I.assertContain(url3, "media/newsroom/");
+            I.dontSee('Oops, an error occurred!')
             I.amOnPage('en/')
         }
         else if (noSection === 4) {
             I.click(this.reportsLnk)
             let url4 = await I.grabCurrentUrl();
             I.assertContain(url4, "media/newsroom/");
+            I.dontSee('Oops, an error occurred!')
         }
     },
 
@@ -316,6 +327,7 @@ module.exports = {
             I.click(this.firstLink)
             let url = await I.grabCurrentUrl();
             I.assertContain(url, 'en/references/overview/refs/pontons-von-cologny/');
+            I.dontSee('Oops, an error occurred!')
             //I.seeCurrentUrlEquals('en/references/overview/refs/pontons-von-cologny/');
         }
         else if (number === 2)  {
@@ -324,6 +336,7 @@ module.exports = {
             I.click(this.secondLink)
             let url = await I.grabCurrentUrl();
             I.assertContain(url, 'en/references/overview/refs/giessenturm-1/');
+            I.dontSee('Oops, an error occurred!')
             //I.seeCurrentUrlEquals('en/references/overview/refs/giessenturm-1/');
         }
         else if (number === 3)  {
@@ -398,6 +411,12 @@ module.exports = {
     async openMenu() {
         await I.waitForElement(this.menu)
         I.click(this.menu)
+        let num = await I.grabNumberOfVisibleElements(this.searchInput)
+        console.log(num)
+        if (num === 0) {
+            I.wait(2)
+            I.click(this.menu)
+        }
     },
 
     openAboutUsSubMenu() {

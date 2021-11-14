@@ -28,12 +28,12 @@ Scenario('Check Stock Price Widget', async () => {
 Scenario('Check Images', async () => {
     tryTo(() => common.acceptCookie())
     I.wait(5)
-    common.checkImage(homePage.contactImg, "Contact_Image", 35)
-    common.checkImage(homePage.civilEngineeringImg, "CivilEngineering_Image", 35)
-    common.checkImage(homePage.impleniaServicesImg, "ImpleniaServices_Image", 35)
-    common.checkImage(homePage.specialConstructionServicesImg, "SpecialConstructionServices_Image", 35)
-    common.checkImage(homePage.homeOwnershipImg, "HomeOwnership_Image", 35)
-    common.checkImage(homePage.sustainableRealEstateImg, "SustainableRealEstate_Image", 35)
+    common.checkImage(homePage.contactImg, "Contact_Image", 60)
+    common.checkImage(homePage.civilEngineeringImg, "CivilEngineering_Image", 60)
+    common.checkImage(homePage.impleniaServicesImg, "ImpleniaServices_Image", 60)
+    common.checkImage(homePage.specialConstructionServicesImg, "SpecialConstructionServices_Image", 60)
+    common.checkImage(homePage.homeOwnershipImg, "HomeOwnership_Image", 60)
+    common.checkImage(homePage.sustainableRealEstateImg, "SustainableRealEstate_Image", 60)
 });
 
 Scenario('Check Navigation Menu', async () => {

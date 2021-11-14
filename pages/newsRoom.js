@@ -71,6 +71,7 @@ module.exports = {
         console.log(hints)
         for (let i = 0; i < numOfElements; i++) {
             I.click(this.newsLink(hints[i]))
+            I.dontSee('Oops, an error occurred!')
             I.amOnPage('en/media/newsroom/')
         }
     },

@@ -11,7 +11,7 @@ Before(() => {
 Scenario('Check the Hero image', async () => {
     I.amOnPage('en/about-us/a-company-with-tradition/')
     I.seeElement(aboutUsPage.heroImg)
-    common.checkImage(aboutUsPage.heroImg, "Hero_Image", 20)
+    common.checkImage(aboutUsPage.heroImg, "Hero_Image", 60)
 });
 
 Scenario('Check the h1, h2 and the intro text are available', async () => {
@@ -33,14 +33,14 @@ Scenario('Check the Button appear and link', async () => {
 Scenario('Check 8 topic blocks available and link', async () => {
     I.amOnPage('en/about-us/a-company-with-tradition/')
     await aboutUsPage.checkNumberOfAboutUsSections(8)
-    common.checkImage(aboutUsPage.historyImg, "History_Image", 20)
-    common.checkImage(aboutUsPage.visionImg, "Vision_Image", 20)
-    common.checkImage(aboutUsPage.strategyImg, "Strategy_Image", 20)
-    common.checkImage(aboutUsPage.organisationImg, "Organisation_Image", 20)
-    common.checkImage(aboutUsPage.innovationImg, "Innovation_Image", 20)
-    common.checkImage(aboutUsPage.corporateImg, "Corporate_Image", 20)
-    common.checkImage(aboutUsPage.healthImg, "Health_Image", 20)
-    common.checkImage(aboutUsPage.purchasingImg, "Purchasing_Image", 20)
+    common.checkImage(aboutUsPage.historyImg, "History_Image", 60)
+    common.checkImage(aboutUsPage.visionImg, "Vision_Image", 60)
+    common.checkImage(aboutUsPage.strategyImg, "Strategy_Image", 60)
+    common.checkImage(aboutUsPage.organisationImg, "Organisation_Image", 60)
+    common.checkImage(aboutUsPage.innovationImg, "Innovation_Image", 60)
+    common.checkImage(aboutUsPage.corporateImg, "Corporate_Image", 60)
+    common.checkImage(aboutUsPage.healthImg, "Health_Image", 60)
+    common.checkImage(aboutUsPage.purchasingImg, "Purchasing_Image", 60)
     await aboutUsPage.openAndCheckHistoryBlock()
     await aboutUsPage.openAndCheckVisionBlock()
     await aboutUsPage.openAndCheckStrategyBlock()
