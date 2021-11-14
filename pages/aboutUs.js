@@ -55,7 +55,7 @@ module.exports = {
             I.click(this.nextBlock(i+1))
             let currentUrl = await I.grabCurrentUrl();
             console.log(currentUrl)
-            //I.dontSee('Oops, an error occurred!')
+            I.dontSee('Oops, an error occurred!')
             I.amOnPage('en/about-us/a-company-with-tradition/')
         }
     },
@@ -65,7 +65,7 @@ module.exports = {
         let historyUrl = await I.grabCurrentUrl();
         console.log(historyUrl)
         I.assertContain(historyUrl, 'en/about-us/history/');
-        //I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops, an error occurred!')
         I.amOnPage('en/about-us/a-company-with-tradition/')
     },
 
@@ -74,7 +74,7 @@ module.exports = {
         let visionUrl = await I.grabCurrentUrl();
         console.log(visionUrl)
         I.assertContain(visionUrl, 'en/about-us/vision-mission-and-values/');
-        //I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops, an error occurred!')
         I.amOnPage('en/about-us/a-company-with-tradition/')
     },
 
@@ -83,7 +83,7 @@ module.exports = {
         let strategyUrl = await I.grabCurrentUrl();
         console.log(strategyUrl)
         I.assertContain(strategyUrl, 'en/about-us/strategy/');
-        //I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops, an error occurred!')
         I.amOnPage('en/about-us/a-company-with-tradition/')
     },
 
@@ -92,7 +92,7 @@ module.exports = {
         let organisationUrl = await I.grabCurrentUrl();
         console.log(organisationUrl)
         I.assertContain(organisationUrl, 'en/about-us/organisation/');
-        //I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops, an error occurred!')
         I.amOnPage('en/about-us/a-company-with-tradition/')
     },
 
@@ -101,7 +101,7 @@ module.exports = {
         let innovationUrl = await I.grabCurrentUrl();
         console.log(innovationUrl)
         I.assertContain(innovationUrl, 'en/about-us/innovation/');
-        //I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops, an error occurred!')
         I.amOnPage('en/about-us/a-company-with-tradition/')
     },
 
@@ -110,7 +110,7 @@ module.exports = {
         let corporateUrl = await I.grabCurrentUrl();
         console.log(corporateUrl)
         I.assertContain(corporateUrl, 'en/about-us/corporate-governance/');
-        //I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops, an error occurred!')
         I.amOnPage('en/about-us/a-company-with-tradition/')
     },
 
@@ -119,7 +119,7 @@ module.exports = {
         let healthUrl = await I.grabCurrentUrl();
         console.log(healthUrl)
         I.assertContain(healthUrl, 'en/about-us/health-safety/');
-        //I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops, an error occurred!')
         I.amOnPage('en/about-us/a-company-with-tradition/')
     },
 
@@ -128,7 +128,7 @@ module.exports = {
         let purchasingUrl = await I.grabCurrentUrl();
         console.log(purchasingUrl)
         I.assertContain(purchasingUrl, 'en/about-us/purchasing-department/supplier/');
-        //I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops, an error occurred!')
         I.amOnPage('en/about-us/a-company-with-tradition/')
     },
 
@@ -159,7 +159,7 @@ module.exports = {
         let buildingUrl = await I.grabCurrentUrl();
         console.log(buildingUrl)
         I.assertContain(buildingUrl, 'en/services/real-estate/building-constructionnew-builds/');
-        //I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops, an error occurred!')
         I.amOnPage('en/about-us/a-company-with-tradition/')
     },
 
@@ -175,7 +175,7 @@ module.exports = {
         let civilEngineeringUrl = await I.grabCurrentUrl();
         console.log(civilEngineeringUrl)
         I.assertContain(civilEngineeringUrl, 'en/services/civil-engineering/');
-        //I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops, an error occurred!')
         I.amOnPage('en/about-us/a-company-with-tradition/')
     },
 
@@ -191,7 +191,7 @@ module.exports = {
         let realEstateDeveloperUrl = await I.grabCurrentUrl();
         console.log(realEstateDeveloperUrl)
         I.assertContain(realEstateDeveloperUrl, 'en/real-estate-consulting/');
-        //I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops, an error occurred!')
         I.amOnPage('en/real-estate-consulting/')
     },
 
@@ -207,7 +207,7 @@ module.exports = {
         let sustainableSolutionsUrl = await I.grabCurrentUrl();
         console.log(sustainableSolutionsUrl)
         I.assertContain(sustainableSolutionsUrl, 'en/sustainability/sustainability-report/');
-        //I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops, an error occurred!')
     },
 
     async checkSecondHeader(){
