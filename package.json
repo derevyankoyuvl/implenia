@@ -6,6 +6,8 @@
     "codeceptjs": "codeceptjs run --steps --grep @form",
     "codeceptjsHome": "codeceptjs run --steps --grep @home",
     "codeceptjsSmoke": "codeceptjs run --steps --grep @smoke",
+    "codeceptjsProductionSmoke": "codeceptjs run --grep @smoke --steps -o '{ \"helpers\": {\"Playwright\": {\"url\": \"https://implenia.com/\"}}}'",
+    "codeceptjsIntegrationSmoke": "codeceptjs run --grep @smoke --steps -o '{ \"helpers\": {\"Playwright\": {\"url\": \"https://denkt&baut:caterpill@r@integration.implenia.com/\"}}}'",
     "codeceptjs:regression": "codeceptjs run --grep @regression --steps --reporter mocha-multi"
   },
   "keywords": [],

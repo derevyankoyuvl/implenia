@@ -11,7 +11,7 @@ Before(() => {
 Scenario('Check the Hero image', async () => {
     I.amOnPage('en/about-us/a-company-with-tradition/')
     I.seeElement(aboutUsPage.heroImg)
-    common.checkImage(aboutUsPage.heroImg, "Hero_Image", 60)
+    //common.checkImage(aboutUsPage.heroImg, "Hero_Image", 60)
 });
 
 Scenario('Check the h1, h2 and the intro text are available', async () => {
@@ -29,7 +29,7 @@ Scenario('Check the Button appear and link', async () => {
     await aboutUsPage.checkRealEstateDeveloperLnk()
     await aboutUsPage.checkSustainableSolutionsLnk()
 });
-
+/*
 Scenario('Check 8 topic blocks available and link', async () => {
     I.amOnPage('en/about-us/a-company-with-tradition/')
     await aboutUsPage.checkNumberOfAboutUsSections(8)
@@ -50,7 +50,7 @@ Scenario('Check 8 topic blocks available and link', async () => {
     await aboutUsPage.openAndCheckHealthBlock()
     await aboutUsPage.openAndCheckPurchasingBlock()
 });
-
+*/
 Scenario('Check 8 topic blocks available and link - Case2', async () => {
     I.amOnPage('en/about-us/a-company-with-tradition/')
     await aboutUsPage.checkNumberOfAboutUsSections(8)
