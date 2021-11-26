@@ -42,7 +42,7 @@ module.exports = {
     shareIsin: locate("div").withAttr({"class": "share__isin"}),
     sharePrice: locate("div").withAttr({"class": "share__price"}),
     shareChange: locate("div").withAttr({"class": "share__change"}),
-    currentLanguage: locate("div").withAttr({"class": "current-lang__identifier"}),
+    currentLanguage: locate("*").withAttr({"class": "current-lang__identifier"}),
     contactImg: locate("img").withAttr({"alt": "Contact"}),
     civilEngineeringImg: locate("img").withAttr({"alt": "Civil Engineering"}),
     sustainableRealEstateImg: locate("img").withAttr({"alt": "Sustainable real estate"}),
