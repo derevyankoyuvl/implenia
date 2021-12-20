@@ -5,16 +5,18 @@ module.exports = {
     menu: locate("div").withAttr({"aria-label": "Menu"}),
     aboutUs: locate("li").withAttr({"data-menu-id": "0"}),
     services: locate("li").withAttr({"data-menu-id": "1"}),
-    references: locate("li").withAttr({"data-menu-id": "2"}),
+    //references: locate("li").withAttr({"data-menu-id": "2"}),
+    references: locate("li").withText('References'),
     investors: locate("li").withAttr({"data-menu-id": "3"}),
     media: locate("li").withAttr({"data-menu-id": "4"}),
     sustainability: locate("li").withAttr({"data-menu-id": "5"}),
     career: locate("li").withAttr({"data-menu-id": "6"}),
-    locations: locate("li").withAttr({"data-menu-id": "7"}),
+    //locations: locate("li").withAttr({"data-menu-id": "7"}),
+    locations: locate("li").withText('Locations'),
     history: locate("a").withAttr({"href": "/en/about-us/history/"}),
     civilEngineering: locate("a").withAttr({"href": "/en/services/civil-engineering/"}),
     publications: locate("a").withAttr({"href": "/en/investor-relations/publications/financial-publications/"}),
-    referencesOverview: locate("a").withAttr({"href": "/en/references/overview/"}),
+    referencesOverview: locate("a").withAttr({"href": "/en/references/"}),
     newsroom: locate("a").withAttr({"href": "/en/media/newsroom/"}),
     overviewLocations: locate("a").withAttr({"href": "/en/locations/overview/"}),
     switzerland: locate("a").withAttr({"href": "/en/career/switzerland/job-opportunities/"}),
@@ -168,12 +170,12 @@ module.exports = {
             //I.wait(0.5)
             I.seeElement(this.references)
             this.openReferenceSubMenu()
-            await I.waitForElement(this.referencesOverview)
-            I.seeElement(this.referencesOverview)
-            this.clickOnReferenceOverview()
+            //await I.waitForElement(this.referencesOverview)
+            //I.seeElement(this.referencesOverview)
+            //this.clickOnReferenceOverview()
             let url = await I.grabCurrentUrl();
             console.log(url)
-            I.assertContain(url, 'en/references/overview/');
+            I.assertContain(url, 'en/references/');
             I.dontSee('Oops, an error occurred!')
             //I.seeCurrentUrlEquals('en/references/overview/');
         }
@@ -262,13 +264,13 @@ module.exports = {
             //I.wait(0.5)
             I.seeElement(this.locations)
             this.openLocationsSubMenu()
-            await I.waitForElement(this.overviewLocations)
+            //await I.waitForElement(this.overviewLocations)
             //I.wait(0.5)
-            I.seeElement(this.overviewLocations)
-            this.clickOnOverviewLocations()
+            //I.seeElement(this.overviewLocations)
+            //this.clickOnOverviewLocations()
             let url = await I.grabCurrentUrl();
             console.log(url)
-            I.assertContain(url, 'en/locations/overview/');
+            I.assertContain(url, 'en/locations/');
             I.dontSee('Oops, an error occurred!')
             //I.seeCurrentUrlEquals('en/locations/overview/');
         }
@@ -326,7 +328,7 @@ module.exports = {
             I.click(this.firstCross)
             I.click(this.firstLink)
             let url = await I.grabCurrentUrl();
-            I.assertContain(url, 'en/references/overview/refs/pontons-von-cologny/');
+            I.assertContain(url, 'en/references/detail/pontons-von-cologny/');
             I.dontSee('Oops, an error occurred!')
             //I.seeCurrentUrlEquals('en/references/overview/refs/pontons-von-cologny/');
         }
@@ -335,7 +337,7 @@ module.exports = {
             I.click(this.secondCross)
             I.click(this.secondLink)
             let url = await I.grabCurrentUrl();
-            I.assertContain(url, 'en/references/overview/refs/giessenturm-1/');
+            I.assertContain(url, 'en/references/detail/giessenturm-1/');
             I.dontSee('Oops, an error occurred!')
             //I.seeCurrentUrlEquals('en/references/overview/refs/giessenturm-1/');
         }
