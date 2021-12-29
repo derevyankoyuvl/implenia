@@ -39,7 +39,7 @@ Scenario('Check Images', async () => {
 Scenario('Check Navigation Menu', async () => {
     tryTo(() => common.acceptCookie())
     await homePage.openMenu()
-    homePage.seeNavigationMenuItems()
+    await homePage.seeNavigationMenuItems()
     await homePage.checkSubMenuNavigation('AboutUs')
     await homePage.checkSubMenuNavigation("Services")
     await homePage.checkSubMenuNavigation("References")
@@ -53,7 +53,7 @@ Scenario('Check Navigation Menu', async () => {
 Scenario('Check Language Panel', async () => {
     tryTo(() => common.acceptCookie())
     homePage.openLanguagePanel()
-    homePage.seeLanguageOptions()
+    await homePage.seeLanguageOptions()
     await homePage.selectLanguage("Norwegian")
     homePage.openLanguagePanel()
     await homePage.selectLanguage("FranceFrance")

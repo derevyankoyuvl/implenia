@@ -129,6 +129,12 @@ module.exports = {
 
     async checkSubMenuNavigation(subMenu){
         if (subMenu === 'AboutUs') {
+            let res = await I.grabNumberOfVisibleElements(this.aboutUs)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                I.click(this.menu);
+                console.log('Open MENU panel one more time')
+            }
             await I.waitForElement(this.aboutUs)
             I.seeElement(this.aboutUs)
             this.openAboutUsSubMenu()
@@ -147,6 +153,12 @@ module.exports = {
             await I.waitForElement(this.menu)
             I.seeElement(this.menu)
             await this.openMenu()
+            let res = await I.grabNumberOfVisibleElements(this.services)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                I.click(this.menu);
+                console.log('Open MENU panel one more time')
+            }
             await I.waitForElement(this.services)
             //I.wait(0.5)
             I.seeElement(this.services)
@@ -166,6 +178,12 @@ module.exports = {
             await I.waitForElement(this.menu)
             I.seeElement(this.menu)
             await this.openMenu()
+            let res = await I.grabNumberOfVisibleElements(this.references)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                I.click(this.menu);
+                console.log('Open MENU panel one more time')
+            }
             await I.waitForElement(this.references)
             //I.wait(0.5)
             I.seeElement(this.references)
@@ -184,6 +202,12 @@ module.exports = {
             await I.waitForElement(this.menu)
             I.seeElement(this.menu)
             await this.openMenu()
+            let res = await I.grabNumberOfVisibleElements(this.investors)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                I.click(this.menu);
+                console.log('Open MENU panel one more time')
+            }
             await I.waitForElement(this.investors)
             //I.wait(0.5)
             I.seeElement(this.investors)
@@ -203,6 +227,12 @@ module.exports = {
             await I.waitForElement(this.menu)
             I.seeElement(this.menu)
             await this.openMenu()
+            let res = await I.grabNumberOfVisibleElements(this.media)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                I.click(this.menu);
+                console.log('Open MENU panel one more time')
+            }
             await I.waitForElement(this.media)
             //I.wait(0.5)
             I.seeElement(this.media)
@@ -222,6 +252,12 @@ module.exports = {
             await I.waitForElement(this.menu)
             I.seeElement(this.menu)
             await this.openMenu()
+            let res = await I.grabNumberOfVisibleElements(this.sustainability)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                I.click(this.menu);
+                console.log('Open MENU panel one more time')
+            }
             await I.waitForElement(this.sustainability)
             //I.wait(0.5)
             I.seeElement(this.sustainability)
@@ -241,6 +277,12 @@ module.exports = {
             await I.waitForElement(this.menu)
             I.seeElement(this.menu)
             await this.openMenu()
+            let res = await I.grabNumberOfVisibleElements(this.career)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                I.click(this.menu);
+                console.log('Open MENU panel one more time')
+            }
             await I.waitForElement(this.career)
             //I.wait(0.5)
             I.seeElement(this.career)
@@ -260,6 +302,12 @@ module.exports = {
             await I.waitForElement(this.menu)
             I.seeElement(this.menu)
             await this.openMenu()
+            let res = await I.grabNumberOfVisibleElements(this.locations)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                I.click(this.menu);
+                console.log('Open MENU panel one more time')
+            }
             await I.waitForElement(this.locations)
             //I.wait(0.5)
             I.seeElement(this.locations)
@@ -383,8 +431,14 @@ module.exports = {
         I.click(this.overviewLocations);
     },
 
-    seeLanguageOptions(){
-        I.wait(2)
+    async seeLanguageOptions() {
+        //I.wait(2)
+        let res = await I.grabNumberOfVisibleElements(this.switzDe)
+        console.log('Result is: ' + res)
+        if (res === 0) {
+                I.click(this.languageHeader);
+                console.log('Open language panel one more time')
+             }
         I.seeElement(this.switzDe)
         I.seeElement(this.switzEn)
         I.seeElement(this.switzFr)
@@ -395,7 +449,13 @@ module.exports = {
         I.seeElement(this.ausDe)
     },
 
-    seeNavigationMenuItems(){
+    async seeNavigationMenuItems() {
+        let res = await I.grabNumberOfVisibleElements(this.aboutUs)
+        console.log('Result is: ' + res)
+        if (res === 0) {
+            I.click(this.menu);
+            console.log('Open MENU panel one more time')
+        }
         I.seeElement(this.aboutUs);
         I.seeElement(this.services);
         I.seeElement(this.references);
@@ -462,6 +522,12 @@ module.exports = {
     async selectLanguage(language) {
         I.wait(1)
         if (language === "FranceFrance") {
+            let res = await I.grabNumberOfVisibleElements(this.fraFr)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                I.click(this.languageHeader);
+                console.log('Open language panel one more time')
+            }
             I.seeElement(this.fraFr)
             I.click(this.fraFr)
             let url = await I.grabCurrentUrl();
@@ -476,6 +542,12 @@ module.exports = {
             I.assertContain(language, 'France | FR')
         }
         else if (language === "English") {
+            let res = await I.grabNumberOfVisibleElements(this.switzEn)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                I.click(this.languageHeader);
+                console.log('Open language panel one more time')
+            }
             I.seeElement(this.switzEn)
             I.click(this.switzEn)
             let url = await I.grabCurrentUrl();
@@ -490,6 +562,12 @@ module.exports = {
             I.assertContain(language, 'Switzerland | EN')
         }
         else if (language === "Norwegian") {
+            let res = await I.grabNumberOfVisibleElements(this.norNo)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                I.click(this.languageHeader);
+                console.log('Open language panel one more time')
+            }
             I.seeElement(this.norNo)
             I.click(this.norNo)
             let url = await I.grabCurrentUrl();
@@ -504,6 +582,12 @@ module.exports = {
             I.assertContain(language, 'Norge | NO')
         }
         else if (language === "Sweden") {
+            let res = await I.grabNumberOfVisibleElements(this.sweSv)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                I.click(this.languageHeader);
+                console.log('Open language panel one more time')
+            }
             I.seeElement(this.sweSv)
             I.click(this.sweSv)
             let url = await I.grabCurrentUrl();
@@ -518,6 +602,12 @@ module.exports = {
             I.assertContain(language, 'Sverige | SV')
         }
         else if (language === "SwitzGerman") {
+            let res = await I.grabNumberOfVisibleElements(this.switzDe)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                I.click(this.languageHeader);
+                console.log('Open language panel one more time')
+            }
             I.seeElement(this.switzDe)
             I.click(this.switzDe)
             I.see('ADHOC MITTEILUNGEN')
@@ -529,6 +619,12 @@ module.exports = {
             I.assertContain(language, 'Schweiz | DE')
         }
         else if (language === "SwitzFrance") {
+            let res = await I.grabNumberOfVisibleElements(this.switzFr)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                I.click(this.languageHeader);
+                console.log('Open language panel one more time')
+            }
             I.seeElement(this.switzFr)
             I.click(this.switzFr)
             let url = await I.grabCurrentUrl();
@@ -543,6 +639,12 @@ module.exports = {
             I.assertContain(language, 'Suisse | FR')
         }
         else if (language === "GermanGerman") {
+            let res = await I.grabNumberOfVisibleElements(this.gerDe)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                I.click(this.languageHeader);
+                console.log('Open language panel one more time')
+            }
             I.seeElement(this.gerDe)
             I.click(this.gerDe)
             let url = await I.grabCurrentUrl();
@@ -557,6 +659,12 @@ module.exports = {
             I.assertContain(language, 'Deutschland | DE')
         }
         else if (language === "AustriaGerman") {
+            let res = await I.grabNumberOfVisibleElements(this.ausDe)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                I.click(this.languageHeader);
+                console.log('Open language panel one more time')
+            }
             I.seeElement(this.ausDe)
             I.click(this.ausDe)
             let url = await I.grabCurrentUrl();
