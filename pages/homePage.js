@@ -376,7 +376,7 @@ module.exports = {
             I.click(this.firstCross)
             I.click(this.firstLink)
             let url = await I.grabCurrentUrl();
-            I.assertContain(url, 'en/references/detail/pontons-von-cologny/');
+            I.assertContain(url, 'en/references/detail/ref/pontons-von-cologny/');
             I.dontSee('Oops, an error occurred!')
             //I.seeCurrentUrlEquals('en/references/overview/refs/pontons-von-cologny/');
         }
@@ -385,7 +385,7 @@ module.exports = {
             I.click(this.secondCross)
             I.click(this.secondLink)
             let url = await I.grabCurrentUrl();
-            I.assertContain(url, 'en/references/detail/giessenturm-1/');
+            I.assertContain(url, 'en/references/detail/ref/giessenturm-1/');
             I.dontSee('Oops, an error occurred!')
             //I.seeCurrentUrlEquals('en/references/overview/refs/giessenturm-1/');
         }
@@ -594,8 +594,8 @@ module.exports = {
             I.assertContain(url, 'sv-se/');
             //I.seeCurrentUrlEquals('sv-se/');
             I.see('AD HOC-MEDDELANDEN')
-            I.see('MEDIARELEASER')
-            I.see('ÄMNEN OCH PROJEKT')
+            //I.see('MEDIARELEASER')
+            //I.see('ÄMNEN OCH PROJEKT')
             I.see('RAPPORTER')
             let language = await I.grabTextFrom(this.currentLanguage)
             console.log(language)
