@@ -7,7 +7,7 @@ Before(() => {
     I.amOnPage('en/')
     tryTo(() => common.acceptCookie())
 })
-/*
+
 Scenario('Check the Hero image', async () => {
     I.amOnPage('en/about-us/a-company-with-tradition/')
     I.seeElement(aboutUsPage.heroImg)
@@ -72,13 +72,6 @@ Scenario('Check that the CVs of 9 people available', async () => {
     await managementPage.checkCVData(9)
 });
 */
-Scenario('Check 8 topic blocks available and link', async () => {
-    I.amOnPage('en/about-us/a-company-with-tradition/')
-    await aboutUsPage.checkNumberOfAboutUsSections(8)
-    await aboutUsPage.checkNumberOfImages()
-    await aboutUsPage.checkAllBlocks()
-});
-
 
 
 
