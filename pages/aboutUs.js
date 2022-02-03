@@ -4,8 +4,10 @@ module.exports = {
 
     heroImg: locate("img").inside(locate("section").withAttr({"class":"layout-single-detail__hero-image"})),
     //heroImg: locate("img").withAttr({"alt": "A young construction company with tradition, Meyerfoto, Iwo Hoffmann"}),
-    firstHeader: locate("h1").withAttr({"class": "hl-1  "}),
-    secondHeader: locate("h2").withAttr({"class": " hl-2"}),
+    //firstHeader: locate("h1").withAttr({"class": "hl-1  "}),
+    //secondHeader: locate("h2").withAttr({"class": " hl-2"}),
+    firstHeader: '//h1',
+    secondHeader: '//header[h1]/h2',
     contactUsBtn: locate("a").withAttr({"href": "/en/about-us/contact/"}),
     buildingConstructionLnk: locate("a").withAttr({"href": "/en/services/real-estate/building-constructionnew-builds/"}).inside(locate("p")),
     intro: locate('p').withText('Implenia is Switzerland'),
