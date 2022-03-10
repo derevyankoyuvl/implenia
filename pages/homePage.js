@@ -31,7 +31,7 @@ module.exports = {
     norNo: locate("a").withAttr({"hreflang": "no-NO"}),
     fraFr: locate("a").withAttr({"hreflang": "fr-FR"}),
     ausDe: locate("a").withAttr({"hreflang": "de-AT"}),
-    circularEconomyVideo: locate("video").withAttr({"title": "Circular economy"}),
+    circularEconomyVideo: locate("video").withAttr({"class": "video-embed-item"}),
     newsSection: locate("div").withAttr({"class": "news [ js-news ] "}),
     firstCross: locate("div").withAttr({"class": "cross"}).inside(locate("div").withAttr({"class":"gallery__mood"})),
     secondCross: locate("div").withAttr({"class": "cross"}).inside(locate("div").withAttr({"class":"gallery__mood gallery__mood--large"})),
