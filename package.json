@@ -4,6 +4,8 @@
   "main": "index.js",
   "scripts": {
     "codeceptjs": "codeceptjs run --steps --grep @form",
+    "codeceptjsFormProd": "codeceptjs run --steps --grep @form -o '{ \"helpers\": {\"Playwright\": {\"url\": \"https://implenia.com/\"}}}'",
+    "codeceptjsFormIntegration": "codeceptjs run --steps --grep @form '{ \"helpers\": {\"Playwright\": {\"url\": \"https://denkt&baut:caterpill@r@integration.implenia.com/\"}}}'",
     "codeceptjsHome": "codeceptjs run --steps --grep @home",
     "codeceptjsSmoke": "codeceptjs run --steps --grep @smoke",
     "codeceptjsProductionSmoke": "codeceptjs run --grep @smoke --steps -o '{ \"helpers\": {\"Playwright\": {\"url\": \"https://implenia.com/\"}}}'",
