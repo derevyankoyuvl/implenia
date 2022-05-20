@@ -5,7 +5,7 @@ let contact = contactForm.CONTACTFORM()
 Feature('Sending data forms').tag('@form');
 
 Scenario('Send contact form', async () => {
-    I.amOnPage('/en/about-us/contact/')
+    I.amOnPage('/en/contacts/')
     await contactPage.acceptCookies()
     contactPage.fillAndSendForm(contact, 'all')
     await contactPage.checkSendingConfirmation()
