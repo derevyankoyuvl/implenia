@@ -26,6 +26,8 @@ module.exports = {
     },
 
     enterFirstName(contactData){
+        I.wait(3)
+        I.waitForElement(this.firstName)
         I.fillField(this.firstName, contactData.firstName)
     },
 
