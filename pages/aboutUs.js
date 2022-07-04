@@ -2,18 +2,24 @@ const {I} = inject()
 
 module.exports = {
 
-    heroImg: locate("img").inside(locate("section").withAttr({"class":"layout-single-detail__hero-image"})),
+    //heroImg: locate("img").inside(locate("section").withAttr({"class":"layout-single-detail__hero-img"})),
+    heroImg: '//img[ancestor::section[contains(@class, \'layout-single-detail__hero-image\')]]',
     //heroImg: locate("img").withAttr({"alt": "A young construction company with tradition, Meyerfoto, Iwo Hoffmann"}),
     //firstHeader: locate("h1").withAttr({"class": "hl-1  "}),
     //secondHeader: locate("h2").withAttr({"class": " hl-2"}),
     firstHeader: '//h1',
     secondHeader: '//header[h1]/h2',
-    contactUsBtn: locate("a").withAttr({"href": "/en/about-us/contact/"}),
-    buildingConstructionLnk: locate("a").withAttr({"href": "/en/services/real-estate/building-constructionnew-builds/"}).inside(locate("p")),
+    contactUsBtn: '//p/a[contains(@href,"/en/contacts/")]',
+    //contactUsBtn: locate("a").withAttr({"href": "/en/about-us/contact/"}),
+    buildingConstructionLnk: '//p/a[contains(@href,"en/real-estate/building-construction-services/")]',
+    //buildingConstructionLnk: locate("a").withAttr({"href": "/en/services/real-estate/building-constructionnew-builds/"}).inside(locate("p")),
     intro: locate('p').withText('Implenia is Switzerland'),
-    civilEngineeringLnk: locate("a").withAttr({"href": "/en/services/civil-engineering/"}).inside(locate("p")),
-    realEstateDeveloperLnk: locate("a").withAttr({"href": "/en/real-estate-consulting/"}).inside(locate("p")),
-    sustainableSolutionsLnk: locate("a").withAttr({"href": "/en/sustainability/sustainability-report/"}).inside(locate("p")),
+    civilEngineeringLnk: '//p/a[contains(@href,"/en/infrastructure/civil-engineering/")]',
+    //civilEngineeringLnk: locate("a").withAttr({"href": "/en/services/civil-engineering/"}).inside(locate("p")),
+    realEstateDeveloperLnk: '//p/a[contains(@href,"en/real-estate/services/real-estate-consulting-planning/")]',
+    //realEstateDeveloperLnk: locate("a").withAttr({"href": "/en/real-estate-consulting/"}).inside(locate("p")),
+    sustainableSolutionsLnk: '//p/a[contains(@href,"/en/sustainability/sustainability-report/")]',
+    //sustainableSolutionsLnk: locate("a").withAttr({"href": "/en/sustainability/sustainability-report/"}).inside(locate("p")),
     //aboutUsBlocks: locate("li").inside(locate("ul").withAttr({"class": "menu--related-content row gutters col-count-4"})),
     aboutUsBlocks:'//li[ancestor::ul[contains(@class, \'row gutters col-count-4\')]]',
     historyBlock: locate("a").withAttr({"title": "History"}),
@@ -59,6 +65,7 @@ module.exports = {
             let currentUrl = await I.grabCurrentUrl();
             console.log(currentUrl)
             I.dontSee('Oops, an error occurred!')
+            I.dontSee('Oops... There was a loading error')
             I.amOnPage('en/about-us/a-company-with-tradition/')
         }
     },
@@ -69,6 +76,7 @@ module.exports = {
         console.log(historyUrl)
         I.assertContain(historyUrl, 'en/about-us/history/');
         I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops... There was a loading error')
         I.amOnPage('en/about-us/a-company-with-tradition/')
     },
 
@@ -78,6 +86,7 @@ module.exports = {
         console.log(visionUrl)
         I.assertContain(visionUrl, 'en/about-us/vision-mission-and-values/');
         I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops... There was a loading error')
         I.amOnPage('en/about-us/a-company-with-tradition/')
     },
 
@@ -87,6 +96,7 @@ module.exports = {
         console.log(strategyUrl)
         I.assertContain(strategyUrl, 'en/about-us/strategy/');
         I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops... There was a loading error')
         I.amOnPage('en/about-us/a-company-with-tradition/')
     },
 
@@ -96,6 +106,7 @@ module.exports = {
         console.log(organisationUrl)
         I.assertContain(organisationUrl, 'en/about-us/organisation/');
         I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops... There was a loading error')
         I.amOnPage('en/about-us/a-company-with-tradition/')
     },
 
@@ -105,6 +116,7 @@ module.exports = {
         console.log(innovationUrl)
         I.assertContain(innovationUrl, 'en/about-us/innovation/');
         I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops... There was a loading error')
         I.amOnPage('en/about-us/a-company-with-tradition/')
     },
 
@@ -114,6 +126,7 @@ module.exports = {
         console.log(corporateUrl)
         I.assertContain(corporateUrl, 'en/about-us/corporate-governance/');
         I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops... There was a loading error')
         I.amOnPage('en/about-us/a-company-with-tradition/')
     },
 
@@ -123,6 +136,7 @@ module.exports = {
         console.log(healthUrl)
         I.assertContain(healthUrl, 'en/about-us/health-safety/');
         I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops... There was a loading error')
         I.amOnPage('en/about-us/a-company-with-tradition/')
     },
 
@@ -132,6 +146,7 @@ module.exports = {
         console.log(purchasingUrl)
         I.assertContain(purchasingUrl, 'en/about-us/purchasing-department/supplier/');
         I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops... There was a loading error')
         I.amOnPage('en/about-us/a-company-with-tradition/')
     },
 
@@ -147,7 +162,7 @@ module.exports = {
         this.clickContactUsBtn()
         let contactUrl = await I.grabCurrentUrl();
         console.log(contactUrl)
-        I.assertContain(contactUrl, 'en/about-us/contact/');
+        I.assertContain(contactUrl, 'en/contacts/');
     },
 
     async checkBuildingConstructionLnk(){
@@ -157,12 +172,13 @@ module.exports = {
         I.assertContain(buildingLnkText, 'building construction');
         let buildingLnk = await I.grabAttributeFrom(this.buildingConstructionLnk, 'href');
         console.log(buildingLnk)
-        I.assertContain(buildingLnk, 'en/services/real-estate/building-constructionnew-builds/');
+        I.assertContain(buildingLnk, 'en/real-estate/building-construction-services/');
         I.amOnPage(buildingLnk)
         let buildingUrl = await I.grabCurrentUrl();
         console.log(buildingUrl)
-        I.assertContain(buildingUrl, 'en/services/real-estate/building-constructionnew-builds/');
+        I.assertContain(buildingUrl, 'en/real-estate/building-construction-services/');
         I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops... There was a loading error')
         I.amOnPage('en/about-us/a-company-with-tradition/')
     },
 
@@ -173,12 +189,13 @@ module.exports = {
         I.assertContain(civilEngineeringLnkText, 'Civil Engineering');
         let civilEngineeringLnk = await I.grabAttributeFrom(this.civilEngineeringLnk, 'href');
         console.log(civilEngineeringLnk)
-        I.assertContain(civilEngineeringLnk, 'en/services/civil-engineering/');
+        I.assertContain(civilEngineeringLnk, '/en/infrastructure/civil-engineering/');
         I.amOnPage(civilEngineeringLnk)
         let civilEngineeringUrl = await I.grabCurrentUrl();
         console.log(civilEngineeringUrl)
-        I.assertContain(civilEngineeringUrl, 'en/services/civil-engineering/');
+        I.assertContain(civilEngineeringUrl, '/en/infrastructure/civil-engineering/');
         I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops... There was a loading error')
         I.amOnPage('en/about-us/a-company-with-tradition/')
     },
 
@@ -189,12 +206,13 @@ module.exports = {
         I.assertContain(realEstateDeveloperLnkText, 'real estate developer');
         let realEstateDeveloperLnk = await I.grabAttributeFrom(this.realEstateDeveloperLnk, 'href');
         console.log(realEstateDeveloperLnk)
-        I.assertContain(realEstateDeveloperLnk, 'en/real-estate-consulting/');
+        I.assertContain(realEstateDeveloperLnk, 'en/real-estate/services/real-estate-consulting-planning/');
         I.amOnPage(realEstateDeveloperLnk)
         let realEstateDeveloperUrl = await I.grabCurrentUrl();
         console.log(realEstateDeveloperUrl)
-        I.assertContain(realEstateDeveloperUrl, 'en/real-estate-consulting/');
+        I.assertContain(realEstateDeveloperUrl, 'en/real-estate/services/real-estate-consulting-planning/');
         I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops... There was a loading error')
         I.amOnPage('en/real-estate-consulting/')
     },
 
@@ -205,19 +223,20 @@ module.exports = {
         I.assertContain(sustainableSolutionsLnkText, 'sustainable solutions');
         let sustainableSolutionsLnk = await I.grabAttributeFrom(this.sustainableSolutionsLnk, 'href');
         console.log(sustainableSolutionsLnk)
-        I.assertContain(sustainableSolutionsLnk, 'en/sustainability/sustainability-report/');
+        I.assertContain(sustainableSolutionsLnk, '/en/sustainability/sustainability-report/');
         I.amOnPage(sustainableSolutionsLnk)
         let sustainableSolutionsUrl = await I.grabCurrentUrl();
         console.log(sustainableSolutionsUrl)
-        I.assertContain(sustainableSolutionsUrl, 'en/sustainability/sustainability-report/');
+        I.assertContain(sustainableSolutionsUrl, '/en/sustainability/sustainability-report/');
         I.dontSee('Oops, an error occurred!')
+        I.dontSee('Oops... There was a loading error')
     },
 
     async checkSecondHeader(){
         I.seeElement(this.secondHeader)
         let secondHeaderText = await I.grabTextFrom(this.secondHeader);
         console.log(secondHeaderText)
-        I.assertContain(secondHeaderText, 'A leading multinational integrated construction and real estate company')
+        //I.assertContain(secondHeaderText, 'Implenia is an integrated leading construction and real estate service provider with clear strategic priorities and a dynamic organisation')
     },
 
     async checkIntro(){

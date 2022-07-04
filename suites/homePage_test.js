@@ -1,4 +1,4 @@
-const {I, homePage, contactPage, common, newsPage} = inject()
+const {I, homePage, contactPage, common, newsPage } = inject()
 const {devices} = require("playwright")
 
 
@@ -27,27 +27,24 @@ Scenario('Check Stock Price Widget', async () => {
 
 Scenario('Check Images', async () => {
     tryTo(() => common.acceptCookie())
-    I.wait(5)
-    common.checkImage(homePage.contactImg, "Contact_Image", 60)
-    common.checkImage(homePage.civilEngineeringImg, "CivilEngineering_Image", 60)
-    common.checkImage(homePage.impleniaServicesImg, "ImpleniaServices_Image", 60)
-    common.checkImage(homePage.specialConstructionServicesImg, "SpecialConstructionServices_Image", 60)
-    common.checkImage(homePage.homeOwnershipImg, "HomeOwnership_Image", 60)
-    common.checkImage(homePage.sustainableRealEstateImg, "SustainableRealEstate_Image", 60)
+    await homePage.checkNewsImages()
+    await homePage.checkReferenceImages()
+    await homePage.checkContactImages()
+    await homePage.checkCareerImages()
+    await homePage.checkInvestorImages()
+    await homePage.checkNewsRoomImages()
+    await homePage.checkTeaserMoodImages()
 });
 
 Scenario('Check Navigation Menu', async () => {
     tryTo(() => common.acceptCookie())
-    await homePage.openMenu()
     await homePage.seeNavigationMenuItems()
-    await homePage.checkSubMenuNavigation('AboutUs')
-    await homePage.checkSubMenuNavigation("Services")
+    await homePage.checkSubMenuNavigation("Infrastructure")
+    await homePage.checkSubMenuNavigation("Real Estate")
+    await homePage.checkSubMenuNavigation("Focus Future")
     await homePage.checkSubMenuNavigation("References")
-    await homePage.checkSubMenuNavigation("Investor Relations")
-    await homePage.checkSubMenuNavigation("Media")
-    await homePage.checkSubMenuNavigation("Sustainability")
-    await homePage.checkSubMenuNavigation("Career")
-    await homePage.checkSubMenuNavigation("Locations")
+    await homePage.checkSubMenuNavigation("MediaInvestors")
+    await homePage.checkSubMenuNavigation('AboutUs')
 });
 
 Scenario('Check Language Panel', async () => {
@@ -73,10 +70,9 @@ Scenario('Check Language Panel', async () => {
 
 Scenario('Check links to references', async () => {
     tryTo(() => common.acceptCookie())
-    await homePage.checkReference(1)
-    await homePage.checkReference(2)
-    await homePage.checkReference(3)
-    await homePage.checkReference(4)
+    I.see('References')
+    I.see('HERE IS A SELECTION OF OUR REFERENCE PROJECTS')
+    await homePage.checkAllReference(5)
 });
 
 Scenario('Check News sections', async () => {
@@ -96,12 +92,10 @@ Scenario('Check on Mobile', async () => {
         I.amOnPage('en/')
         common.acceptCookie()
         homePage.openMenu()
-        homePage.seeNavigationMenuItems()
+        await homePage.seeNavigationMenuItems(true)
+        await homePage.checkSubMenuNavigation("Focus Future")
+        homePage.openMenu()
         await homePage.checkSubMenuNavigation('AboutUs')
-        await homePage.checkSubMenuNavigation("Services")
-        await homePage.checkSubMenuNavigation("References")
-        await homePage.checkSubMenuNavigation("Investor Relations")
-        await homePage.checkSubMenuNavigation("Media")
         I.amOnPage('en/')
         homePage.openLanguagePanel()
         homePage.seeLanguageOptions()
@@ -133,3 +127,7 @@ Scenario('Check search by keyword Implenia - results are clickable', async () =>
     await homePage.checkSearchResultRecords()
 });
 */
+
+
+
+

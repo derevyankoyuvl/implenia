@@ -2,27 +2,45 @@ const {I, spinner} = inject()
 
 module.exports = {
 
-    menu: locate("div").withAttr({"aria-label": "Menu"}),
-    aboutUs: locate("li").withAttr({"data-menu-id": "0"}),
-    services: locate("li").withAttr({"data-menu-id": "1"}),
+    infrastructureMenu: '//li/a[@data-menu-id=\'main-menu-item-0\']',
+    realEstateMenu: '//li/a[@data-menu-id=\'main-menu-item-1\']',
+    focusFutureMenu: '//li/a[@data-menu-id=\'main-menu-item-2\']',
+    referencesMenu: locate("li").withText('References'),
+    mediaInvestorsMenu: '//li/a[@data-menu-id=\'main-menu-item-4\']',
+    aboutUsMenu: '//li/a[@data-menu-id=\'main-menu-item-5\']',
+    //menu: locate("div").withAttr({"aria-label": "Menu"}),
+    menu: '//a[@data-menu-id=\'main-menu\']',
+    aboutUs: locate("li").withAttr({"data-menu-id": "5"}),
+    services: locate("li").withAttr({"data-menu-id": "0"}),
+    competences: locate("li").withAttr({"data-menu-id": "1"}),
     //references: locate("li").withAttr({"data-menu-id": "2"}),
-    references: locate("li").withText('References'),
-    investors: locate("li").withAttr({"data-menu-id": "3"}),
+    //references: locate("li").withText('References'),
+    investorRelations: locate("li").withText('Investor Relations'),
     media: locate("li").withAttr({"data-menu-id": "4"}),
     sustainability: locate("li").withAttr({"data-menu-id": "5"}),
     career: locate("li").withAttr({"data-menu-id": "6"}),
-    //locations: locate("li").withAttr({"data-menu-id": "7"}),
+    contact: locate("li").withAttr({"data-menu-id": "7"}),
     locations: locate("li").withText('Locations'),
     history: locate("a").withAttr({"href": "/en/about-us/history/"}),
+    company: locate("a").withText('Company'),
     civilEngineering: locate("a").withAttr({"href": "/en/services/civil-engineering/"}),
     publications: locate("a").withAttr({"href": "/en/investor-relations/publications/financial-publications/"}),
     referencesOverview: locate("a").withAttr({"href": "/en/references/"}),
+    competencesOverview: locate("a").withText('Overview competences'),
+    contactOverview: locate("a").withText('Overview contacts'),
+    civilEngineeringServices: locate("a").withText('Civil engineering services'),
+    buildingConstructionServices: locate("a").withText('Building construction services'),
+    focusFutureOverview: locate("a").withText('Overview'),
+    mediaInvestorRelations: locate("a").withText('Investor Relations'),
+    aboutUsCompany: locate("a").withText('Company'),
+    annualReports: locate("a").withAttr({"href": "/en/investor-relations/annualreport/2021/"}),
     newsroom: locate("a").withAttr({"href": "/en/media/newsroom/"}),
     overviewLocations: locate("a").withAttr({"href": "/en/locations/overview/"}),
     switzerland: locate("a").withAttr({"href": "/en/career/switzerland/job-opportunities/"}),
     sustainabilityReport: locate("a").withAttr({"href": "/en/sustainability/sustainability-report/"}),
     constructionCompany: locate("a").withAttr({"href": "/ueber-uns/unternehmen-mit-tradition/"}),
-    languageHeader: locate("div").withAttr({"data-tab": "lang-site-header"}),
+    //languageHeader: locate("div").withAttr({"data-tab": "lang-site-header"}),
+    languageHeader: '//div[@class=\'current-lang__icon\']',
     switzDe: locate("a").withAttr({"hreflang": "de-CH"}),
     switzEn: locate("a").withAttr({"hreflang": "en-CH"}),
     switzFr: locate("a").withAttr({"hreflang": "fr-CH"}),
@@ -32,7 +50,9 @@ module.exports = {
     fraFr: locate("a").withAttr({"hreflang": "fr-FR"}),
     ausDe: locate("a").withAttr({"hreflang": "de-AT"}),
     circularEconomyVideo: locate("video").withAttr({"class": "video-embed-item"}),
-    newsSection: locate("div").withAttr({"class": "news [ js-news ] "}),
+    //newsSection: locate("div").withAttr({"class": "news [ js-news ] "}),
+    newsSection: '//div[@class=\'hero__news-container\']//div[@class = \'news [ js-news ] \']',
+    //div[@class='hero__news-container']//div[@class = 'news [ js-news ] ']
     firstCross: locate("div").withAttr({"class": "cross"}).inside(locate("div").withAttr({"class":"gallery__mood"})),
     secondCross: locate("div").withAttr({"class": "cross"}).inside(locate("div").withAttr({"class":"gallery__mood gallery__mood--large"})),
     thirdCross: locate("div").withAttr({"class": "cross"}).inside(locate("div").withAttr({"class":"gallery__mood gallery__mood--small overlap"})),
@@ -45,7 +65,12 @@ module.exports = {
     sharePrice: locate("div").withAttr({"class": "share__price"}),
     shareChange: locate("div").withAttr({"class": "share__change"}),
     currentLanguage: locate("*").withAttr({"class": "current-lang__identifier"}),
-    contactImg: locate("img").withAttr({"alt": "Contact"}),
+    contactImg: '//a[contains(@href, \'contact\')]/img',
+    careerImg: '//a[contains(@href, \'job\')]/img',
+    investorImg: '//a[contains(@href, \'investor\')]/img',
+    newsRoomImg: '//a[contains(@href, \'newsroom\')]/img',
+    teaserMoodImg: '//div[@class=\'teaser__mood\']/img',
+    investorRelationsImg: '//img[@class=\'image-embed-item\']',
     civilEngineeringImg: locate("img").withAttr({"alt": "Civil Engineering"}),
     sustainableRealEstateImg: locate("img").withAttr({"alt": "Sustainable real estate"}),
     impleniaServicesImg: locate("img").withAttr({"alt": "Implenia Services"}),
@@ -67,10 +92,184 @@ module.exports = {
     searchResultRecord: (id) => locate("div").withAttr({"class": "search-result"}).at(id),
     searchResultLink: (ref) => locate("a").withAttr({"href": ref}),
     searchResultHref: locate("a"),
+    referenceImg: '//div[button[@aria-label=\'Previous\']]//div[@aria-hidden=\'false\']//img',
+    referencePrevious: '//button[@aria-label=\'Previous\']',
+    referenceNext: '//button[@aria-label=\'Next\']',
+    readMoreBtn: '//div[button[@aria-label=\'Previous\']]//div[@aria-hidden=\'false\']//a[@class=\'button\']',
+    newsImg:'//div[@class=\'news-listing\']//img',
+
+    async checkNewsImages(){
+        let numOfElements = await I.grabNumberOfVisibleElements(this.newsImg);
+        console.log('Number of News Images ' + numOfElements )
+        I.assertEqual(numOfElements, 4);
+    },
+
+    async checkReferenceImages(){
+        let referenceImgIsDispayed = await this.isReferenceImageDisplayed()
+        I.assertEqual(referenceImgIsDispayed, true);
+    },
+
+    async checkContactImages(){
+        let contactImgIsDispayed = await this.isContactImageDisplayed()
+        I.assertEqual(contactImgIsDispayed, true);
+    },
+
+    async checkCareerImages(){
+        let careerImgIsDispayed = await this.isCareerImageDisplayed()
+        I.assertEqual(careerImgIsDispayed, true);
+    },
+
+    async checkInvestorImages(){
+        let investorImgIsDispayed = await this.isInvestorImageDisplayed()
+        I.assertEqual(investorImgIsDispayed, true);
+    },
+
+    async checkNewsRoomImages(){
+        let newsRoomImgIsDispayed = await this.isNewsRoomImageDisplayed()
+        I.assertEqual(newsRoomImgIsDispayed, true);
+    },
+
+    async checkTeaserMoodImages(){
+        let teaserMoodImgIsDispayed = await this.isTeaserMoodImageDisplayed()
+        I.assertEqual(teaserMoodImgIsDispayed, true);
+    },
 
     acceptCookies() {
         //I.click('.sc-gtsrHT.iGMqnF');
         I.click({css: 'button[data-testid=uc-accept-all-button]'} );
+    },
+
+    clickOnNextBtn(){
+      I.click(this.referenceNext)
+    },
+
+    async isReferenceImageDisplayed(){
+        let numOfElements = await I.grabNumberOfVisibleElements(this.referenceImg);
+        console.log('Number of links to check ' + numOfElements )
+        if (numOfElements === 1) {
+        return true
+        }
+        else {
+            return false
+        }
+    },
+
+    async isContactImageDisplayed(){
+        let numOfElements = await I.grabNumberOfVisibleElements(this.contactImg);
+        console.log('Number of links to check ' + numOfElements )
+        if (numOfElements === 1) {
+            return true
+        }
+        else {
+            return false
+        }
+    },
+
+    async isCareerImageDisplayed(){
+        let numOfElements = await I.grabNumberOfVisibleElements(this.careerImg);
+        console.log('Number of links to check ' + numOfElements )
+        if (numOfElements === 1) {
+            return true
+        }
+        else {
+            return false
+        }
+    },
+
+    async isInvestorImageDisplayed(){
+        let numOfElements = await I.grabNumberOfVisibleElements(this.investorImg);
+        console.log('Number of links to check ' + numOfElements )
+        if (numOfElements === 1) {
+            return true
+        }
+        else {
+            return false
+        }
+    },
+
+    async isNewsRoomImageDisplayed(){
+        let numOfElements = await I.grabNumberOfVisibleElements(this.newsRoomImg);
+        console.log('Number of links to check ' + numOfElements )
+        if (numOfElements === 1) {
+            return true
+        }
+        else {
+            return false
+        }
+    },
+
+    async isTeaserMoodImageDisplayed(){
+        let numOfElements = await I.grabNumberOfVisibleElements(this.teaserMoodImg);
+        console.log('Number of links to check ' + numOfElements )
+        if (numOfElements === 1) {
+            return true
+        }
+        else {
+            return false
+        }
+    },
+
+    async isReadMoreBtnDisplayed(){
+        let numOfElements = await I.grabNumberOfVisibleElements(this.readMoreBtn);
+        console.log('Number of links to check ' + numOfElements )
+        if (numOfElements === 1) {
+            return true
+        }
+        else {
+            return false
+        }
+    },
+
+    async checkAllReference(n){
+        let i = 1
+        for(i; i<n; i++){
+            let isImgPresent = await this.isReferenceImageDisplayed()
+            I.assertEqual(isImgPresent, true);
+            let isReadBtnPresent = await this.isReadMoreBtnDisplayed()
+            I.assertEqual(isReadBtnPresent, true);
+            I.click(this.readMoreBtn)
+            I.dontSee('Oops, an error occurred!')
+            I.dontSee('Oops... There was a loading error')
+            let url = await I.grabCurrentUrl();
+            console.log(url)
+            I.amOnPage('en/')
+            if (i === 1) {
+                this.clickOnNextBtn()
+            }
+            if (i === 2) {
+                this.clickOnNextBtn()
+                I.wait(1)
+                this.clickOnNextBtn()
+            }
+            if (i === 3) {
+                this.clickOnNextBtn()
+                I.wait(1)
+                this.clickOnNextBtn()
+                I.wait(1)
+                this.clickOnNextBtn()
+            }
+            if (i === 4) {
+                this.clickOnNextBtn()
+                I.wait(1)
+                this.clickOnNextBtn()
+                I.wait(1)
+                this.clickOnNextBtn()
+                I.wait(1)
+                this.clickOnNextBtn()
+            }
+            if (i === 5) {
+                this.clickOnNextBtn()
+                I.wait(1)
+                this.clickOnNextBtn()
+                I.wait(1)
+                this.clickOnNextBtn()
+                I.wait(1)
+                this.clickOnNextBtn()
+                I.wait(1)
+                this.clickOnNextBtn()
+            }
+
+        }
     },
 
     async checkSearchResultRecords() {
@@ -128,32 +327,12 @@ module.exports = {
     },
 
     async checkSubMenuNavigation(subMenu){
-        if (subMenu === 'AboutUs') {
-            let res = await I.grabNumberOfVisibleElements(this.aboutUs)
-            console.log('Result is: ' + res)
-            if (res === 0) {
-                I.click(this.menu);
-                console.log('Open MENU panel one more time')
-            }
-            await I.waitForElement(this.aboutUs)
-            I.seeElement(this.aboutUs)
-            this.openAboutUsSubMenu()
-            await I.waitForElement(this.history)
-            I.seeElement(this.history)
-            //I.wait(0.5)
-            this.clickOnHistory()
-            let url = await I.grabCurrentUrl();
-            console.log(url)
-            I.assertContain(url, 'en/about-us/history/');
-            I.dontSee('Oops, an error occurred!')
-            //I.seeCurrentUrlEquals('en/about-us/history/');
-        }
-        else if (subMenu === "Services") {
-            I.amOnPage('en/')
-            await I.waitForElement(this.menu)
-            I.seeElement(this.menu)
-            await this.openMenu()
-            let res = await I.grabNumberOfVisibleElements(this.services)
+         if (subMenu === "Services") {
+            //I.amOnPage('en/')
+            //await I.waitForElement(this.menu)
+            //I.seeElement(this.menu)
+            //await this.openMenu()
+            let res = await I.grabNumberOfVisibleElements(this.searchInput)
             console.log('Result is: ' + res)
             if (res === 0) {
                 I.click(this.menu);
@@ -171,33 +350,10 @@ module.exports = {
             console.log(url)
             I.assertContain(url, 'en/services/civil-engineering/');
             I.dontSee('Oops, an error occurred!')
+             I.dontSee('Oops... There was a loading error')
             //I.seeCurrentUrlEquals('en/services/civil-engineering/');
         }
-        else if (subMenu === "References") {
-            I.amOnPage('en/')
-            await I.waitForElement(this.menu)
-            I.seeElement(this.menu)
-            await this.openMenu()
-            let res = await I.grabNumberOfVisibleElements(this.references)
-            console.log('Result is: ' + res)
-            if (res === 0) {
-                I.click(this.menu);
-                console.log('Open MENU panel one more time')
-            }
-            await I.waitForElement(this.references)
-            //I.wait(0.5)
-            I.seeElement(this.references)
-            this.openReferenceSubMenu()
-            //await I.waitForElement(this.referencesOverview)
-            //I.seeElement(this.referencesOverview)
-            //this.clickOnReferenceOverview()
-            let url = await I.grabCurrentUrl();
-            console.log(url)
-            I.assertContain(url, 'en/references/');
-            I.dontSee('Oops, an error occurred!')
-            //I.seeCurrentUrlEquals('en/references/overview/');
-        }
-        else if (subMenu === "Investor Relations") {
+        else if (subMenu === "Investor") {
             I.amOnPage('en/')
             await I.waitForElement(this.menu)
             I.seeElement(this.menu)
@@ -220,6 +376,7 @@ module.exports = {
             console.log(url)
             I.assertContain(url, 'en/investor-relations/publications/financial-publications/');
             I.dontSee('Oops, an error occurred!')
+             I.dontSee('Oops... There was a loading error')
             //I.seeCurrentUrlEquals('en/investor-relations/publications/financial-publications/');
         }
         else if (subMenu === "Media") {
@@ -245,6 +402,7 @@ module.exports = {
             console.log(url)
             I.assertContain(url, 'en/media/newsroom/');
             I.dontSee('Oops, an error occurred!')
+             I.dontSee('Oops... There was a loading error')
             //I.seeCurrentUrlEquals('en/media/newsroom/');
         }
         else if (subMenu === "Sustainability") {
@@ -270,6 +428,7 @@ module.exports = {
             console.log(url)
             I.assertContain(url, 'en/sustainability/sustainability-report/');
             I.dontSee('Oops, an error occurred!')
+             I.dontSee('Oops... There was a loading error')
             //I.seeCurrentUrlEquals('en/sustainability/sustainability-report/');
         }
         else if (subMenu === "Career") {
@@ -295,6 +454,7 @@ module.exports = {
             console.log(url)
             I.assertContain(url, 'en/career/switzerland/job-opportunities/');
             I.dontSee('Oops, an error occurred!')
+             I.dontSee('Oops... There was a loading error')
             //I.seeCurrentUrlEquals('en/career/switzerland/job-opportunities/');
         }
         else if (subMenu === "Locations") {
@@ -320,7 +480,262 @@ module.exports = {
             console.log(url)
             I.assertContain(url, 'en/locations/');
             I.dontSee('Oops, an error occurred!')
+             I.dontSee('Oops... There was a loading error')
             //I.seeCurrentUrlEquals('en/locations/overview/');
+        }
+        else if (subMenu === "Competences") {
+            I.amOnPage('en/')
+            await I.waitForElement(this.menu)
+            I.seeElement(this.menu)
+            await this.openMenu()
+            let res = await I.grabNumberOfVisibleElements(this.competences)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                I.click(this.menu);
+                console.log('Open MENU panel one more time')
+            }
+            await I.waitForElement(this.competences)
+            //I.wait(0.5)
+            I.seeElement(this.competences)
+            this.openCompetencesSubMenu()
+            //await I.waitForElement(this.overviewLocations)
+            //I.wait(0.5)
+            //I.seeElement(this.overviewLocations)
+            //this.clickOnOverviewLocations()
+            await I.waitForElement(this.competencesOverview)
+            I.seeElement(this.competencesOverview)
+            I.click(this.competencesOverview)
+            let url = await I.grabCurrentUrl();
+            console.log(url)
+            I.assertContain(url, 'overview-competences/');
+            I.dontSee('Oops, an error occurred!')
+             I.dontSee('Oops... There was a loading error')
+            //I.seeCurrentUrlEquals('en/locations/overview/');
+        }
+        else if (subMenu === "Investor Relations") {
+            I.amOnPage('en/')
+            await I.waitForElement(this.menu)
+            I.seeElement(this.menu)
+            await this.openMenu()
+            let res = await I.grabNumberOfVisibleElements(this.investorRelations)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                I.click(this.menu);
+                console.log('Open MENU panel one more time')
+            }
+            await I.waitForElement(this.investorRelations)
+            //I.wait(0.5)
+            I.seeElement(this.investorRelations)
+            this.openInvestorRelationsSubMenu()
+            //await I.waitForElement(this.overviewLocations)
+            //I.wait(0.5)
+            //I.seeElement(this.overviewLocations)
+            //this.clickOnOverviewLocations()
+            await I.waitForElement(this.annualReports)
+            I.seeElement(this.annualReports)
+            I.click(this.annualReports)
+            let url = await I.grabCurrentUrl();
+            console.log(url)
+            I.assertContain(url, 'annualreport');
+            I.dontSee('Oops, an error occurred!')
+             I.dontSee('Oops... There was a loading error')
+            //I.seeCurrentUrlEquals('en/locations/overview/');
+        }
+        else if (subMenu === "Contact") {
+            I.amOnPage('en/')
+            await I.waitForElement(this.menu)
+            I.seeElement(this.menu)
+            await this.openMenu()
+            let res = await I.grabNumberOfVisibleElements(this.contact)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                I.click(this.menu);
+                console.log('Open MENU panel one more time')
+            }
+            await I.waitForElement(this.contact)
+            //I.wait(0.5)
+            I.seeElement(this.contact)
+            this.openContactSubMenu()
+            //await I.waitForElement(this.overviewLocations)
+            //I.wait(0.5)
+            //I.seeElement(this.overviewLocations)
+            //this.clickOnOverviewLocations()
+            await I.waitForElement(this.contactOverview)
+            I.seeElement(this.contactOverview)
+            I.click(this.contactOverview)
+            let url = await I.grabCurrentUrl();
+            console.log(url)
+            I.assertContain(url, 'contact/overview/');
+            I.dontSee('Oops, an error occurred!')
+             I.dontSee('Oops... There was a loading error')
+            //I.seeCurrentUrlEquals('en/locations/overview/');
+        }
+        else if (subMenu === "Services") {
+            //I.amOnPage('en/')
+            //await I.waitForElement(this.menu)
+            //I.seeElement(this.menu)
+            //await this.openMenu()
+            let res = await I.grabNumberOfVisibleElements(this.searchInput)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                I.click(this.menu);
+                console.log('Open MENU panel one more time')
+            }
+            await I.waitForElement(this.services)
+            //I.wait(0.5)
+            I.seeElement(this.services)
+            this.openServicesSubMenu()
+            //I.wait(0.5)
+            await I.waitForElement(this.civilEngineering)
+            I.seeElement(this.civilEngineering)
+            this.clickOnCivilEngineering()
+            let url = await I.grabCurrentUrl();
+            console.log(url)
+            I.assertContain(url, 'en/services/civil-engineering/');
+            I.dontSee('Oops, an error occurred!')
+             I.dontSee('Oops... There was a loading error')
+            //I.seeCurrentUrlEquals('en/services/civil-engineering/');
+        }
+        else if (subMenu === "Infrastructure") {
+            I.amOnPage('en/')
+            let res = await I.grabNumberOfVisibleElements(this.infrastructureMenu)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                let res = await I.grabNumberOfVisibleElements(this.infrastructureMenu)
+                console.log('Result2 is: ' + res)
+                if (res === 0) {
+                    I.click(this.menu);
+                    console.log('Open MENU panel one more time')
+                }
+            }
+            await I.waitForElement(this.infrastructureMenu)
+            I.seeElement(this.infrastructureMenu)
+            this.openInfrastructureSubMenu()
+            await I.waitForElement(this.civilEngineeringServices)
+            I.seeElement(this.civilEngineeringServices)
+            I.click(this.civilEngineeringServices)
+            let url = await I.grabCurrentUrl();
+            console.log(url)
+            I.assertContain(url, 'infrastructure/civil-engineering/');
+            I.dontSee('Oops, an error occurred!')
+             I.dontSee('Oops... There was a loading error')
+        }
+        else if (subMenu === "Real Estate") {
+            I.amOnPage('en/')
+            let res = await I.grabNumberOfVisibleElements(this.realEstateMenu)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                let res = await I.grabNumberOfVisibleElements(this.realEstateMenu)
+                console.log('Result2 is: ' + res)
+                if (res === 0) {
+                    I.click(this.menu);
+                    console.log('Open MENU panel one more time')
+                }
+            }
+            await I.waitForElement(this.realEstateMenu)
+            I.seeElement(this.realEstateMenu)
+            this.openRealEstateMenuSubMenu()
+            await I.waitForElement(this.buildingConstructionServices)
+            I.seeElement(this.buildingConstructionServices)
+            I.click(this.buildingConstructionServices)
+            let url = await I.grabCurrentUrl();
+            console.log(url)
+            I.assertContain(url, 'real-estate/building-construction-services/');
+            I.dontSee('Oops, an error occurred!')
+             I.dontSee('Oops... There was a loading error')
+        }
+        else if (subMenu === "Focus Future") {
+            I.amOnPage('en/')
+            let res = await I.grabNumberOfVisibleElements(this.focusFutureMenu)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                let res = await I.grabNumberOfVisibleElements(this.focusFutureMenu)
+                console.log('Result2 is: ' + res)
+                if (res === 0) {
+                    I.click(this.menu);
+                    console.log('Open MENU panel one more time')
+                }
+            }
+            await I.waitForElement(this.focusFutureMenu)
+            I.seeElement(this.focusFutureMenu)
+            this.openFocusFutureSubMenu()
+            await I.waitForElement(this.focusFutureOverview)
+            I.seeElement(this.focusFutureOverview)
+            I.click(this.focusFutureOverview)
+            let url = await I.grabCurrentUrl();
+            console.log(url)
+            I.assertContain(url, 'future/overview/');
+            I.dontSee('Oops, an error occurred!')
+             I.dontSee('Oops... There was a loading error')
+        }
+        else if (subMenu === "References") {
+            I.amOnPage('en/')
+            let res = await I.grabNumberOfVisibleElements(this.referencesMenu)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                let res = await I.grabNumberOfVisibleElements(this.referencesMenu)
+                console.log('Result2 is: ' + res)
+                if (res === 0) {
+                    I.click(this.menu);
+                    console.log('Open MENU panel one more time')
+                }
+            }
+            await I.waitForElement(this.referencesMenu)
+            I.seeElement(this.referencesMenu)
+            this.openReferencesSubMenu()
+            let url = await I.grabCurrentUrl();
+            console.log(url)
+            I.assertContain(url, 'references/');
+            I.dontSee('Oops, an error occurred!')
+             I.dontSee('Oops... There was a loading error')
+        }
+        else if (subMenu === "MediaInvestors") {
+            I.amOnPage('en/')
+            let res = await I.grabNumberOfVisibleElements(this.mediaInvestorsMenu)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                let res = await I.grabNumberOfVisibleElements(this.mediaInvestorsMenu)
+                console.log('Result2 is: ' + res)
+                if (res === 0) {
+                    I.click(this.menu);
+                    console.log('Open MENU panel one more time')
+                }
+            }
+            await I.waitForElement(this.mediaInvestorsMenu)
+            I.seeElement(this.mediaInvestorsMenu)
+            this.openMediaInvestorsSubMenu()
+            await I.waitForElement(this.mediaInvestorRelations)
+            I.seeElement(this.mediaInvestorRelations)
+            I.click(this.mediaInvestorRelations)
+            let url = await I.grabCurrentUrl();
+            console.log(url)
+            I.assertContain(url, 'investor-relations/');
+            I.dontSee('Oops, an error occurred!')
+             I.dontSee('Oops... There was a loading error')
+        }
+        else if (subMenu === "AboutUs") {
+            I.amOnPage('en/')
+            let res = await I.grabNumberOfVisibleElements(this.aboutUsMenu)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                let res = await I.grabNumberOfVisibleElements(this.aboutUsMenu)
+                console.log('Result2 is: ' + res)
+                if (res === 0) {
+                    I.click(this.menu);
+                    console.log('Open MENU panel one more time')
+                }
+            }
+            await I.waitForElement(this.aboutUsMenu)
+            I.seeElement(this.aboutUsMenu)
+            this.openAboutUsMenuSubMenu()
+            await I.waitForElement(this.aboutUsCompany)
+            I.seeElement(this.aboutUsCompany)
+            I.click(this.aboutUsCompany)
+            let url = await I.grabCurrentUrl();
+            console.log(url)
+            I.assertContain(url, 'about-us/a-company-with-tradition/');
+            I.dontSee('Oops, an error occurred!')
+             I.dontSee('Oops... There was a loading error')
         }
     },
 
@@ -330,6 +745,7 @@ module.exports = {
             let url = await I.grabCurrentUrl();
             I.assertContain(url, "media/newsroom/");
             I.dontSee('Oops, an error occurred!')
+            I.dontSee('Oops... There was a loading error')
             I.amOnPage('en/')
         }
         else if (noSection === 2) {
@@ -343,6 +759,7 @@ module.exports = {
             let url3 = await I.grabCurrentUrl();
             I.assertContain(url3, "media/newsroom/");
             I.dontSee('Oops, an error occurred!')
+            I.dontSee('Oops... There was a loading error')
             I.amOnPage('en/')
         }
         else if (noSection === 4) {
@@ -350,6 +767,7 @@ module.exports = {
             let url4 = await I.grabCurrentUrl();
             I.assertContain(url4, "media/newsroom/");
             I.dontSee('Oops, an error occurred!')
+            I.dontSee('Oops... There was a loading error')
         }
     },
 
@@ -378,6 +796,7 @@ module.exports = {
             let url = await I.grabCurrentUrl();
             I.assertContain(url, 'en/references/detail/ref/pontons-von-cologny/');
             I.dontSee('Oops, an error occurred!')
+            I.dontSee('Oops... There was a loading error')
             //I.seeCurrentUrlEquals('en/references/overview/refs/pontons-von-cologny/');
         }
         else if (number === 2)  {
@@ -387,6 +806,7 @@ module.exports = {
             let url = await I.grabCurrentUrl();
             I.assertContain(url, 'en/references/detail/ref/giessenturm-1/');
             I.dontSee('Oops, an error occurred!')
+            I.dontSee('Oops... There was a loading error')
             //I.seeCurrentUrlEquals('en/references/overview/refs/giessenturm-1/');
         }
         else if (number === 3)  {
@@ -449,21 +869,33 @@ module.exports = {
         I.seeElement(this.ausDe)
     },
 
-    async seeNavigationMenuItems() {
-        let res = await I.grabNumberOfVisibleElements(this.aboutUs)
-        console.log('Result is: ' + res)
-        if (res === 0) {
-            I.click(this.menu);
-            console.log('Open MENU panel one more time')
+    async seeNavigationMenuItems(isMobile=false) {
+        if (isMobile === true) {
+            I.seeElement(this.infrastructureMenu)
+            I.seeElement(this.realEstateMenu)
+            I.seeElement(this.focusFutureMenu)
+            I.seeElement(this.referencesMenu)
+            I.seeElement(this.mediaInvestorsMenu)
+            I.seeElement(this.aboutUsMenu)
         }
-        I.seeElement(this.aboutUs);
-        I.seeElement(this.services);
-        I.seeElement(this.references);
-        I.seeElement(this.investors);
-        I.seeElement(this.media);
-        I.seeElement(this.sustainability);
-        I.seeElement(this.career);
-        I.seeElement(this.locations);
+        else {
+            let res = await I.grabNumberOfVisibleElements(this.infrastructureMenu)
+            console.log('Result is: ' + res)
+            if (res === 0) {
+                I.wait(3)
+                let res = await I.grabNumberOfVisibleElements(this.infrastructureMenu)
+                console.log('Result2 is: ' + res)
+                if (res === 0) {I.click(this.menu);
+                    console.log('Open MENU panel one more time')
+                }
+            }
+            I.seeElement(this.infrastructureMenu)
+            I.seeElement(this.realEstateMenu)
+            I.seeElement(this.focusFutureMenu)
+            I.seeElement(this.referencesMenu)
+            I.seeElement(this.mediaInvestorsMenu)
+            I.seeElement(this.aboutUsMenu)
+        }
     },
 
     checkNumberNewsSection(){
@@ -483,6 +915,46 @@ module.exports = {
 
     openAboutUsSubMenu() {
         I.click(this.aboutUs);
+    },
+
+    openContactSubMenu() {
+        I.click(this.contact);
+    },
+
+    openInfrastructureSubMenu() {
+        I.click(this.infrastructureMenu);
+    },
+
+    openRealEstateMenuSubMenu() {
+        I.click(this.realEstateMenu);
+    },
+
+    openFocusFutureSubMenu() {
+        I.click(this.focusFutureMenu);
+    },
+
+    openMediaInvestorsSubMenu() {
+        I.click(this.mediaInvestorsMenu);
+    },
+
+    openAboutUsMenuSubMenu() {
+        I.click(this.aboutUsMenu);
+    },
+
+    openReferencesSubMenu() {
+        I.click(this.referencesMenu);
+    },
+
+    openCompetencesSubMenu() {
+        I.click(this.competences);
+    },
+
+    openInvestorRelationsSubMenu() {
+        I.click(this.investorRelations);
+    },
+
+    openOverviewCompetencesMenu() {
+        I.click(this.competencesOverview);
     },
 
     openServicesSubMenu() {
@@ -539,7 +1011,7 @@ module.exports = {
             I.see('RAPPORTS')
             let language = await I.grabTextFrom(this.currentLanguage)
             console.log(language)
-            I.assertContain(language, 'France | FR')
+            I.assertContain(language, 'FranceFR')
         }
         else if (language === "English") {
             let res = await I.grabNumberOfVisibleElements(this.switzEn)
@@ -559,7 +1031,7 @@ module.exports = {
             I.see('REPORTS')
             let language = await I.grabTextFrom(this.currentLanguage)
             console.log(language)
-            I.assertContain(language, 'Switzerland | EN')
+            I.assertContain(language, 'SwitzerlandEN')
         }
         else if (language === "Norwegian") {
             let res = await I.grabNumberOfVisibleElements(this.norNo)
@@ -579,7 +1051,7 @@ module.exports = {
             I.see('RAPPORTER')
             let language = await I.grabTextFrom(this.currentLanguage)
             console.log(language)
-            I.assertContain(language, 'Norge | NO')
+            I.assertContain(language, 'NorgeNO')
         }
         else if (language === "Sweden") {
             let res = await I.grabNumberOfVisibleElements(this.sweSv)
@@ -599,7 +1071,7 @@ module.exports = {
             I.see('RAPPORTER')
             let language = await I.grabTextFrom(this.currentLanguage)
             console.log(language)
-            I.assertContain(language, 'Sverige | SV')
+            I.assertContain(language, 'SverigeSV')
         }
         else if (language === "SwitzGerman") {
             let res = await I.grabNumberOfVisibleElements(this.switzDe)
@@ -616,7 +1088,7 @@ module.exports = {
             I.see('REPORTS')
             let language = await I.grabTextFrom(this.currentLanguage)
             console.log(language)
-            I.assertContain(language, 'Schweiz | DE')
+            I.assertContain(language, 'SchweizDE')
         }
         else if (language === "SwitzFrance") {
             let res = await I.grabNumberOfVisibleElements(this.switzFr)
@@ -636,7 +1108,7 @@ module.exports = {
             I.see('RAPPORTS')
             let language = await I.grabTextFrom(this.currentLanguage)
             console.log(language)
-            I.assertContain(language, 'Suisse | FR')
+            I.assertContain(language, 'SuisseFR')
         }
         else if (language === "GermanGerman") {
             let res = await I.grabNumberOfVisibleElements(this.gerDe)
@@ -656,7 +1128,7 @@ module.exports = {
             I.see('REPORTS')
             let language = await I.grabTextFrom(this.currentLanguage)
             console.log(language)
-            I.assertContain(language, 'Deutschland | DE')
+            I.assertContain(language, 'DeutschlandDE')
         }
         else if (language === "AustriaGerman") {
             let res = await I.grabNumberOfVisibleElements(this.ausDe)
@@ -676,7 +1148,7 @@ module.exports = {
             I.see('REPORTS')
             let language = await I.grabTextFrom(this.currentLanguage)
             console.log(language)
-            I.assertContain(language, 'Österreich | DE')
+            I.assertContain(language, 'ÖsterreichDE')
         }
         else console.log("This language is not presented")
     },

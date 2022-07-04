@@ -32,7 +32,7 @@ Scenario('Check the Button appear and link', async () => {
 
 Scenario('Check 8 topic blocks available and link', async () => {
     I.amOnPage('en/about-us/a-company-with-tradition/')
-    await aboutUsPage.checkNumberOfAboutUsSections(8)
+    await aboutUsPage.checkNumberOfAboutUsSections(7)
     await aboutUsPage.checkNumberOfImages()
     await aboutUsPage.checkAllBlocks()
 });
@@ -72,8 +72,4 @@ Scenario('Check that the CVs of 9 people available', async () => {
     await managementPage.checkCVData(9)
 });
 */
-
-
-
-
 

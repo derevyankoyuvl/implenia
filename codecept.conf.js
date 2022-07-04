@@ -7,8 +7,8 @@ exports.config = {
   helpers: {
     Playwright: {
       //url: 'https://denkt&baut:caterpill@r@stage.implenia.com/',
-      //url: 'https://implenia.com/',
-      url: 'https://denkt&baut:caterpill@r@integration.implenia.com/',
+      url: 'https://implenia.com/',
+      //url: 'https://denkt&baut:caterpill@r@integration.implenia.com/',
       //url: 'https://prod2.implenia.com/',
       show: false,
       browser: 'firefox',
@@ -16,8 +16,8 @@ exports.config = {
       waitForNavigation: "networkidle",
       waitForTimeout: 10000,
       //windowSize: 'maximize',
-      windowSize: '1240x650',
-      //windowSize: '1260x718',
+      //windowSize: '1240x650',
+      windowSize: '1260x718',
     },
     ResembleHelper : {
       "require": "codeceptjs-resemblehelper",
