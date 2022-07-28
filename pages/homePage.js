@@ -95,7 +95,7 @@ module.exports = {
     referenceImg: '//div[button[@aria-label=\'Previous\']]//div[@aria-hidden=\'false\']//img',
     referencePrevious: '//button[@aria-label=\'Previous\']',
     referenceNext: '//button[@aria-label=\'Next\']',
-    readMoreBtn: '//div[button[@aria-label=\'Previous\']]//div[@aria-hidden=\'false\']//a[@class=\'button\']',
+    readMoreBtn: '//div[button[@aria-label=\'Previous\']]//div[@aria-hidden=\'false\']//a[contains(text(),"Read")]',
     newsImg:'//div[@class=\'news-listing\']//img',
 
     async checkNewsImages(){

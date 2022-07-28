@@ -11,14 +11,14 @@ module.exports = {
     secondHeader: '//header[h1]/h2',
     contactUsBtn: '//p/a[contains(@href,"/en/contacts/")]',
     //contactUsBtn: locate("a").withAttr({"href": "/en/about-us/contact/"}),
-    buildingConstructionLnk: '//p/a[contains(@href,"en/real-estate/building-construction-services/")]',
+    buildingConstructionLnk: '//p/strong/a[contains(@href,"en/real-estate/building-construction-services/")]',
     //buildingConstructionLnk: locate("a").withAttr({"href": "/en/services/real-estate/building-constructionnew-builds/"}).inside(locate("p")),
     intro: locate('p').withText('Implenia is Switzerland'),
-    civilEngineeringLnk: '//p/a[contains(@href,"/en/infrastructure/civil-engineering/")]',
+    civilEngineeringLnk: '//p/strong/a[contains(@href,"/en/infrastructure/civil-engineering/")]',
     //civilEngineeringLnk: locate("a").withAttr({"href": "/en/services/civil-engineering/"}).inside(locate("p")),
-    realEstateDeveloperLnk: '//p/a[contains(@href,"en/real-estate/services/real-estate-consulting-planning/")]',
+    realEstateDeveloperLnk: '//p/strong/a[contains(@href,"en/real-estate/services/real-estate-consulting-planning/")]',
     //realEstateDeveloperLnk: locate("a").withAttr({"href": "/en/real-estate-consulting/"}).inside(locate("p")),
-    sustainableSolutionsLnk: '//p/a[contains(@href,"/en/sustainability/sustainability-report/")]',
+    sustainableSolutionsLnk: '//ul[@class=\'list--dots\']/li/a[contains(@href,"/en/sustainability/sustainability-report/")]',
     //sustainableSolutionsLnk: locate("a").withAttr({"href": "/en/sustainability/sustainability-report/"}).inside(locate("p")),
     //aboutUsBlocks: locate("li").inside(locate("ul").withAttr({"class": "menu--related-content row gutters col-count-4"})),
     aboutUsBlocks:'//li[ancestor::ul[contains(@class, \'row gutters col-count-4\')]]',
@@ -246,7 +246,7 @@ module.exports = {
         I.assertContain(introText, 'Implenia is Switzerland’s leading construction and real estate services company.')
         I.assertContain(introText, 'It has significant building construction  and Civil Engineering  operations in Switzerland, Germany and Austria, as well as strong positions in the infrastructure sectors of all its home markets: Switzerland, Germany, Austria, France, Sweden and Norway.')
         I.assertContain(introText, 'Implenia is also a successful real estate developer in Switzerland and Germany.')
-        I.assertContain(introText, 'Working with and for people, Implenia creates and builds sustainable solutions for tomorrow’s living, working and mobility needs.')
+        //I.assertContain(introText, 'Working with and for people, Implenia creates and builds sustainable solutions for tomorrow’s living, working and mobility needs.')
     },
 
     openBuildingConstructionLnk(){
