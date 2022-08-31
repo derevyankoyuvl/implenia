@@ -59,7 +59,7 @@ module.exports = {
     forthCross: locate("div").withAttr({"class": "cross"}).inside(locate("div").withAttr({"class":"gallery__mood gallery__mood--small"})),
     firstLink: locate("a").withAttr({"href": "https://implenia.com/en/references/overview/refs/pontons-von-cologny/"}),
     secondLink: locate("a").withAttr({"href": "https://implenia.com/en/references/overview/refs/giessenturm-1/"}),
-    stockPrice: locate("div").withAttr({"class": "share-price"}),
+    stockPrice: '//div[contains(@class, \'share-price\')]',
     shareSwx: locate("div").withAttr({"class": "share__swx"}),
     shareIsin: locate("div").withAttr({"class": "share__isin"}),
     sharePrice: locate("div").withAttr({"class": "share__price"}),
