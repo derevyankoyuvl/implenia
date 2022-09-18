@@ -15,6 +15,7 @@ exports.config = {
       //browser: 'chromium',
       waitForNavigation: "networkidle",
       waitForTimeout: 10000,
+      timeout: 10000,
       //windowSize: 'maximize',
       //windowSize: '1240x650',
       windowSize: '1260x718',

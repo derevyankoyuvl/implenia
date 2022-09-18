@@ -22,7 +22,7 @@ Scenario('Check Stock Price Widget', async () => {
     I.seeElement(homePage.shareIsin);
     I.seeElement(homePage.sharePrice);
     I.seeElement(homePage.shareChange);
-    common.checkImage(homePage.stockPrice, "StockPrice", 30)
+    common.checkImage(homePage.stockPrice, "StockPrice", 50)
 });
 
 Scenario('Check Images', async () => {
@@ -127,7 +127,3 @@ Scenario('Check search by keyword Implenia - results are clickable', async () =>
     await homePage.checkSearchResultRecords()
 });
 */
-
-
-
-
