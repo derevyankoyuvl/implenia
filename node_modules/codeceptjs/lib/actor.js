@@ -27,8 +27,26 @@ class Actor {
   }
 
   /**
+   * set the maximum execution time for the next step
    * @function
-   * @param {*} opts
+   * @param {number} timeout - step timeout in seconds
+   * @return {this}
+   * @inner
+   */
+  limitTime(timeout) {
+    if (!store.timeouts) return this;
+
+    event.dispatcher.prependOnceListener(event.step.before, (step) => {
+      output.log(`Timeout to ${step}: ${timeout}s`);
+      step.setTimeout(timeout * 1000, Step.TIMEOUT_ORDER.codeLimitTime);
+    });
+
+    return this;
+  }
+
+  /**
+   * @function
+   * @param {*} [opts]
    * @return {this}
    * @inner
    */
@@ -74,8 +92,7 @@ module.exports = function (obj = {}) {
   const helpers = container.helpers();
 
   // add methods from enabled helpers
-  Object.keys(helpers)
-    .map(key => helpers[key])
+  Object.values(helpers)
     .forEach((helper) => {
       methodsOfObject(helper, 'Helper')
         .filter(method => method !== 'constructor' && method[0] !== '_')
@@ -115,7 +132,7 @@ function recordStep(step, args) {
       step.startTime = Date.now();
     }
     return val = step.run(...args);
-  });
+  }, false, undefined, step.getTimeout());
 
   event.emit(event.step.after, step);
 

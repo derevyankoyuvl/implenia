@@ -151,6 +151,13 @@ class Locator {
   }
 
   /**
+   * @returns {boolean}
+   */
+  isBasic() {
+    return this.isCSS() || this.isXPath();
+  }
+
+  /**
    * @returns {string}
    */
   toXPath() {
@@ -306,11 +313,14 @@ Locator.build = (locator) => {
 
 /**
  * Filters to modify locators
+ * @type {Array<function(CodeceptJS.LocatorOrString, Locator): void>}
  */
 Locator.filters = [];
 
 /**
  * Appends new `Locator` filter to an `Locator.filters` array, and returns the new length of the array.
+ * @param {function(CodeceptJS.LocatorOrString, Locator): void} fn
+ * @returns {number}
  */
 Locator.addFilter = fn => Locator.filters.push(fn);
 

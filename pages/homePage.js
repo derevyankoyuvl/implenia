@@ -66,7 +66,7 @@ module.exports = {
     shareChange: locate("div").withAttr({"class": "share__change"}),
     currentLanguage: locate("*").withAttr({"class": "current-lang__identifier"}),
     contactImg: '//a[contains(@href, \'contact\')]/img',
-    careerImg: '//a[contains(@href, \'job\')]/img',
+    careerImg: '//a[contains(@href, \'career\')]/img',
     investorImg: '//a[contains(@href, \'investor\')]/img',
     newsRoomImg: '//a[contains(@href, \'newsroom\')]/img',
     teaserMoodImg: '//div[@class=\'teaser__mood\']/img',

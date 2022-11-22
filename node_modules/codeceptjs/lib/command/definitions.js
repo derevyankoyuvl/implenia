@@ -146,9 +146,18 @@ module.exports = function (genPath, options) {
     }
   }
 
+  let autoLogin;
+  if (config.plugins.autoLogin) {
+    autoLogin = config.plugins.autoLogin.inject;
+  }
+
   const supportObject = new Map();
   supportObject.set('I', 'I');
   supportObject.set('current', 'any');
+
+  if (autoLogin) {
+    supportObject.set(autoLogin, 'any');
+  }
 
   if (customHelpers.length > 0) {
     hasCustomHelper = true;
@@ -194,7 +203,14 @@ function getPath(originalPath, targetFolderPath, testsPath) {
   else if (parsedPath.ext === '.ts') parsedPath.base = parsedPath.name;
 
   if (!parsedPath.dir.startsWith('.')) return path.posix.join(parsedPath.dir, parsedPath.base);
-  const relativePath = path.posix.relative(targetFolderPath, path.posix.join(testsPath, parsedPath.dir, parsedPath.base));
+  const relativePath = path.posix.relative(
+    targetFolderPath.split(path.sep).join(path.posix.sep),
+    path.posix.join(
+      testsPath.split(path.sep).join(path.posix.sep),
+      parsedPath.dir.split(path.sep).join(path.posix.sep),
+      parsedPath.base.split(path.sep).join(path.posix.sep),
+    ),
+  );
 
   return relativePath.startsWith('.') ? relativePath : `./${relativePath}`;
 }
