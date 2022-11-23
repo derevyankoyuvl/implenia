@@ -151,6 +151,7 @@ module.exports = {
     },
 
     async checkFirstHeader(){
+        I.waitForVisible(this.firstHeader)
         I.seeElement(this.firstHeader)
         let firstHeaderText = await I.grabTextFrom(this.firstHeader);
         console.log(firstHeaderText)
@@ -158,6 +159,7 @@ module.exports = {
     },
 
     async checkContactUsBtn(){
+        I.waitForVisible(this.contactUsBtn)
         I.seeElement(this.contactUsBtn)
         this.clickContactUsBtn()
         let contactUrl = await I.grabCurrentUrl();
@@ -213,7 +215,6 @@ module.exports = {
         I.assertContain(realEstateDeveloperUrl, 'en/real-estate/services/real-estate-consulting-planning/');
         I.dontSee('Oops, an error occurred!')
         I.dontSee('Oops... There was a loading error')
-        I.amOnPage('en/real-estate-consulting/')
     },
 
     async checkSustainableSolutionsLnk(){
