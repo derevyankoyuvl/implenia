@@ -10,7 +10,7 @@ exports.config = {
       url: 'https://implenia.com/',
       //url: 'https://denkt&baut:caterpill@r@integration.implenia.com/',
       //url: 'https://prod2.implenia.com/',
-      show: true,
+      show: false,
       browser: 'firefox',
       //browser: 'chromium',
       waitForNavigation: "networkidle",
