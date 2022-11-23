@@ -8,7 +8,8 @@ module.exports = {
     //firstHeader: locate("h1").withAttr({"class": "hl-1  "}),
     //secondHeader: locate("h2").withAttr({"class": " hl-2"}),
     firstHeader: '//h1',
-    secondHeader: '//header[h1]/h2',
+    secondHeader: '//header/h2',
+    thirdHeader: '//h3',
     contactUsBtn: '//p/a[contains(@href,"/en/contacts/")]',
     //contactUsBtn: locate("a").withAttr({"href": "/en/about-us/contact/"}),
     buildingConstructionLnk: '//p/strong/a[contains(@href,"en/real-estate/building-construction-services/")]',
@@ -21,7 +22,7 @@ module.exports = {
     sustainableSolutionsLnk: '//ul[@class=\'list--dots\']/li/a[contains(@href,"/en/sustainability/sustainability-report/")]',
     //sustainableSolutionsLnk: locate("a").withAttr({"href": "/en/sustainability/sustainability-report/"}).inside(locate("p")),
     //aboutUsBlocks: locate("li").inside(locate("ul").withAttr({"class": "menu--related-content row gutters col-count-4"})),
-    aboutUsBlocks:'//li[ancestor::ul[contains(@class, \'row gutters col-count-4\')]]',
+    aboutUsBlocks:'//div[@data-mobile-title=\'About us\']/div[@class=\'related-content related-content--grid\']/div',
     historyBlock: locate("a").withAttr({"title": "History"}),
     visionBlock: locate("a").withAttr({"title": "Vision, mission and values"}),
     strategyBlock: locate("a").withAttr({"title": "Strategy"}),
@@ -40,8 +41,9 @@ module.exports = {
     corporateImg: locate("img").withAttr({"alt": "Corporate Governance"}),
     healthImg: locate("img").inside(locate('a').withAttr({"href": "/en/about-us/health-safety/"})),
     purchasingImg: locate("img").withAttr({"alt": "Einkauf"}),
-    nextBlock: (id) => locate("a").inside(locate("li").withAttr({'class': 'col '})).at(id),
-    blockImages: locate("img").inside(locate("li").withAttr({'class': 'col '})),
+    //nextBlock: (id) => locate("a").inside(locate("li").withAttr({'class': 'col '})).at(id),
+    nextBlock: (id) => '(.//a[ancestor::div[contains(@class, \'grid-item grid-item\')]])[position()=' + id + ']',
+    blockImages:'//div[@class=\'related-content related-content--grid\']/div/a/div/img',
 
 
     async checkNumberOfAboutUsSections(sectionNum) {
@@ -155,7 +157,7 @@ module.exports = {
         I.seeElement(this.firstHeader)
         let firstHeaderText = await I.grabTextFrom(this.firstHeader);
         console.log(firstHeaderText)
-        I.assertContain(firstHeaderText, 'A young construction company with long tradition')
+        //I.assertContain(firstHeaderText, 'A young construction company with long tradition')
     },
 
     async checkContactUsBtn(){
@@ -237,6 +239,13 @@ module.exports = {
         I.seeElement(this.secondHeader)
         let secondHeaderText = await I.grabTextFrom(this.secondHeader);
         console.log(secondHeaderText)
+        //I.assertContain(secondHeaderText, 'Implenia is an integrated leading construction and real estate service provider with clear strategic priorities and a dynamic organisation')
+    },
+
+    async checkThirdHeader(){
+        I.seeElement(this.thirdHeader)
+        let thirdHeaderText = await I.grabTextFrom(this.thirdHeader);
+        console.log(thirdHeaderText)
         //I.assertContain(secondHeaderText, 'Implenia is an integrated leading construction and real estate service provider with clear strategic priorities and a dynamic organisation')
     },
 

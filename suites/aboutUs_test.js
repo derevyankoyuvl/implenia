@@ -18,6 +18,7 @@ Scenario('Check the h1, h2 and the intro text are available', async () => {
     I.amOnPage('en/about-us/a-company-with-tradition/')
     await aboutUsPage.checkFirstHeader()
     await aboutUsPage.checkSecondHeader()
+    await aboutUsPage.checkThirdHeader()
     await aboutUsPage.checkIntro()
 });
 
@@ -72,4 +73,3 @@ Scenario('Check that the CVs of 9 people available', async () => {
     await managementPage.checkCVData(9)
 });
 */
-
