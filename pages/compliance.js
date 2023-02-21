@@ -12,7 +12,7 @@ module.exports = {
     description: locate("textarea").withAttr({"id": "powermail_field_beschreibung"}),
     sendBtn: locate("input").withAttr({"value": "Send"}),
 
-    fillAndSendForm(fName, lName, func, contact, time, loc, people, desc){
+    async fillAndSendForm(fName, lName, func, contact, time, loc, people, desc) {
         I.fillField(this.firstName, fName)
         I.fillField(this.lastName, lName)
         I.fillField(this.function, func)
@@ -22,7 +22,9 @@ module.exports = {
         I.fillField(this.location, loc)
         I.fillField(this.involvedPersons, people)
         I.fillField(this.description, desc)
-        I.click(this.sendBtn)
+        await I.waitForEnabled(this.sendBtn, 20000)
+        await I.waitForClickable(this.sendBtn, 20000);
+        await I.click(this.sendBtn);
     },
 
     async checkSendingConfirmation(){

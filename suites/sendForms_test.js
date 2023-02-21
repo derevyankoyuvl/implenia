@@ -7,7 +7,7 @@ Feature('Sending data forms').tag('@form');
 Scenario('Send contact form', async () => {
     I.amOnPage('/en/contacts/')
     await contactPage.acceptCookies()
-    contactPage.fillAndSendForm(contact, 'all')
+    await contactPage.fillAndSendForm(contact, 'all')
     await contactPage.checkSendingConfirmation()
     let data = await I.checkEmailText(contact.lastName + ' <' + contact.email + '>')
     console.log(contact)
@@ -22,7 +22,7 @@ Scenario('Send contact form', async () => {
 Scenario('Send form on Compliance Page', async () => {
     I.amOnPage('/en/implenia-on-site/compliance/')
     tryTo(() => common.acceptCookie())
-    compliancePage.fillAndSendForm('TestFName', 'TestLName', 'Test function', 'Test Contact Enquiries', 'Test date and time', 'Test location', 'Test Involved Persons', 'This is test description for this case')
+    await compliancePage.fillAndSendForm('TestFName', 'TestLName', 'Test function', 'Test Contact Enquiries', 'Test date and time', 'Test location', 'Test Involved Persons', 'This is test description for this case')
     I.wait(3)
     await compliancePage.checkSendingConfirmation()
     I.see('Thank you very much for your message!')

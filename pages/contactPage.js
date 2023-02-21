@@ -63,11 +63,13 @@ module.exports = {
         I.click(this.dataPrivacy)
     },
 
-    sendForm(){
-        I.click(this.send)
+    async sendForm() {
+        await I.waitForEnabled(this.send, 20000)
+        await I.waitForClickable(this.send, 20000);
+        await I.click(this.send);
     },
 
-    fillAndSendForm(contactData, type){
+    async fillAndSendForm(contactData, type) {
         if (type === 'all') {
             this.enterFirstName(contactData)
             this.enterLastName(contactData)
@@ -77,47 +79,41 @@ module.exports = {
             this.enterAddress(contactData)
             this.enterMessage(contactData)
             this.checkDataPrivacy()
-            this.sendForm()
-        }
-        else if (type === 'required') {
+            await this.sendForm()
+        } else if (type === 'required') {
             this.enterFirstName(contactData)
             this.enterLastName(contactData)
             this.enterEmail(contactData)
             this.enterMessage(contactData)
             this.checkDataPrivacy()
-            this.sendForm()
-        }
-        else if (type === 'empty') {
-            this.sendForm()
-        }
-        else if (type === 'first') {
+            await this.sendForm()
+        } else if (type === 'empty') {
+            await this.sendForm()
+        } else if (type === 'first') {
             this.enterLastName(contactData)
             this.enterEmail(contactData)
             this.enterPhone(contactData)
             this.enterCompany(contactData)
             this.enterMessage(contactData)
             this.checkDataPrivacy()
-            this.sendForm()
-        }
-        else if (type === 'last') {
+            await this.sendForm()
+        } else if (type === 'last') {
             this.enterFirstName(contactData)
             this.enterEmail(contactData)
             this.enterPhone(contactData)
             this.enterCompany(contactData)
             this.enterMessage(contactData)
             this.checkDataPrivacy()
-            this.sendForm()
-        }
-        else if (type === 'email') {
+            await this.sendForm()
+        } else if (type === 'email') {
             this.enterFirstName(contactData)
             this.enterLastName(contactData)
             this.enterPhone(contactData)
             this.enterCompany(contactData)
             this.enterMessage(contactData)
             this.checkDataPrivacy()
-            this.sendForm()
-        }
-        else if (type === 'invalidEmail') {
+            await this.sendForm()
+        } else if (type === 'invalidEmail') {
             this.enterFirstName(contactData)
             this.enterLastName(contactData)
             this.enterInvalidEmail()
@@ -125,7 +121,7 @@ module.exports = {
             this.enterCompany(contactData)
             this.enterMessage(contactData)
             this.checkDataPrivacy()
-            this.sendForm()
+            await this.sendForm()
         }
     },
 }
