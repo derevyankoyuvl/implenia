@@ -20,7 +20,7 @@ Scenario('Send contact form', async () => {
 });
 
 Scenario('Send form on Compliance Page', async () => {
-    I.amOnPage('/en/implenia-on-site/compliance/')
+    I.amOnPage('/en/contacts/')
     tryTo(() => common.acceptCookie())
     await compliancePage.fillAndSendForm('TestFName', 'TestLName', 'Test function', 'Test Contact Enquiries', 'Test date and time', 'Test location', 'Test Involved Persons', 'This is test description for this case')
     I.wait(3)
