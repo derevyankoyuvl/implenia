@@ -5,11 +5,11 @@
   "scripts": {
     "codeceptjs": "codeceptjs run --steps --grep @aboutUs",
     "codeceptjsFormProd": "codeceptjs run --steps --grep @form -o '{ \"helpers\": {\"Playwright\": {\"url\": \"https://implenia.com/\"}}}'",
-    "codeceptjsFormIntegration": "codeceptjs run --steps --grep @form -o '{ \"helpers\": {\"Playwright\": {\"url\": \"https://denkt&baut:caterpill@r@integration.implenia.com/\"}}}'",
+    "codeceptjsFormIntegration": "codeceptjs run --steps --grep @form -o '{ \"helpers\": {\"Playwright\": {\"url\": \"https://Zukunft-Gestalten-Und-Bauen:Nachh@ltigkeit@integration.implenia.com/\"}}}'",
     "codeceptjsHome": "codeceptjs run --steps --grep @home",
     "codeceptjsSmoke": "codeceptjs run --steps --grep @smoke",
     "codeceptjsProductionSmoke": "codeceptjs run --grep @smoke --steps -o '{ \"helpers\": {\"Playwright\": {\"url\": \"https://implenia.com/\"}}}'",
-    "codeceptjsIntegrationSmoke": "codeceptjs run --grep @smoke --steps -o '{ \"helpers\": {\"Playwright\": {\"url\": \"https://denkt&baut:caterpill@r@integration.implenia.com/\"}}}'",
+    "codeceptjsIntegrationSmoke": "codeceptjs run --grep @smoke --steps -o '{ \"helpers\": {\"Playwright\": {\"url\": \"https://Zukunft-Gestalten-Und-Bauen:Nachh@ltigkeit@integration.implenia.com/\"}}}'",
     "codeceptjs:regression": "codeceptjs run --grep @regression --steps --reporter mocha-multi"
   },
   "keywords": [],
